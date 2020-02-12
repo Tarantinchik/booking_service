@@ -2,7 +2,7 @@ package com.bookingservice.models;
 
 import java.util.Objects;
 
-public class User {
+public class User extends SuperUser {
 
     private static int counter = 0;
     private final int id;
@@ -12,12 +12,10 @@ public class User {
     private String email;
     private int age;
     private String countryResidence;
-    private String login;
-    private String password;
     private String token;
 
     public User(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
-        //super(login, password);
+        super(login, password);
         this.id = counter++;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -56,14 +54,6 @@ public class User {
         return countryResidence;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public String getToken() {
         return token;
     }
@@ -84,14 +74,6 @@ public class User {
         this.countryResidence = countryResidence;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setToken(String token) {
         this.token = token;
     }
@@ -106,7 +88,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", countryResidence='" + countryResidence + '\'' +
-                ", login='" + login + '\'' +
+                ", login='" + this.getLogin() + '\'' +
                 '}';
     }
 
@@ -123,11 +105,11 @@ public class User {
                 Objects.equals(phone, user.phone) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(countryResidence, user.countryResidence) &&
-                Objects.equals(login, user.login);
+                Objects.equals(this.getLogin(), user.getLogin());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, firstName, lastName, phone, email, age, countryResidence, login);
+        return Objects.hash(super.hashCode(), id, firstName, lastName, phone, email, age, countryResidence, this.getLogin());
     }
 }

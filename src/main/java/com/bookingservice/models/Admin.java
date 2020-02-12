@@ -1,12 +1,9 @@
 package com.bookingservice.models;
 
-public class Admin {
-
-    private String login;
-    private String password;
+public class Admin extends SuperUser {
 
     public Admin(String login, String password) {
-        this.login = login;
-        this.password = password;
+        super(login, password);
     }
+
 }
