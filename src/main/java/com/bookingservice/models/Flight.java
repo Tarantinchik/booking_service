@@ -1,6 +1,7 @@
 package com.bookingservice.models;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Flight {
     private static int countId;
@@ -84,6 +85,35 @@ public class Flight {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", flightId='" + flightId + '\'' +
+                ", seatsCapacity=" + seatsCapacity +
+                ", seatsLeft=" + seatsLeft +
+                ", cityFrom='" + cityFrom + '\'' +
+                ", cityTo='" + cityTo + '\'' +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                ", price=" + price +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flight flight = (Flight) o;
+        return id == flight.id &&
+                Objects.equals(flightId, flight.flightId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, flightId);
     }
 }
 

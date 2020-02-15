@@ -99,17 +99,12 @@ public class User extends SuperUser {
         if (!super.equals(o)) return false;
         User user = (User) o;
         return id == user.id &&
-                age == user.age &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
                 Objects.equals(phone, user.phone) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(countryResidence, user.countryResidence) &&
-                Objects.equals(this.getLogin(), user.getLogin());
+                Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id, firstName, lastName, phone, email, age, countryResidence, this.getLogin());
+        return Objects.hash(super.hashCode(), id, phone, email);
     }
 }
