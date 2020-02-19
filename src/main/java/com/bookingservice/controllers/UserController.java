@@ -1,10 +1,10 @@
-package com.bookingservice.services;
+package com.bookingservice.controllers;
 
 import com.bookingservice.models.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserController {
 
     // CRUD
 
@@ -25,4 +25,5 @@ public interface UserService {
 
     //delete
     boolean deleteUser(User user);
+
 }

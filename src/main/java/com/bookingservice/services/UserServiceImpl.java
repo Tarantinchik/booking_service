@@ -1,28 +1,43 @@
 package com.bookingservice.services;
 
+import com.bookingservice.dao.UserDAO;
 import com.bookingservice.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
+
+    private UserDAO userDAO = new UserDAO();
+
     @Override
     public User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
-        return null;
+        return new User(login, password, firstName, lastName, phone, email, age, countryResidence);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        return this.userDAO.getUserList();
     }
 
     @Override
-    public List<User> getUsersById(Integer id) {
-        return null;
+    public User getUsersById(Integer id) {
+        return Optional.of(this.userDAO.getUserList()
+                .stream()
+                .filter(user -> id.equals(user.getId()))
+                .findFirst()
+                .get())
+                .orElse(null);
     }
 
     @Override
-    public List<User> getUsersByLogin(String login) {
-        return null;
+    public User getUsersByLogin(String login) {
+        return Optional.of(this.userDAO.getUserList()
+                .stream()
+                .filter(user -> login.equals(user.getLogin()))
+                .findFirst()
+                .get())
+                .orElse(null);
     }
 
     @Override
@@ -32,6 +47,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteUser(User user) {
-        return false;
+        return this.userDAO.deleteUser(user);
     }
 }
