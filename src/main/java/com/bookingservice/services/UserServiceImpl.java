@@ -22,21 +22,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUsersById(Integer id) {
-        return Optional.of(this.userDAO.getUserList()
+        return this.userDAO.getUserList()
                 .stream()
                 .filter(user -> id.equals(user.getId()))
                 .findFirst()
-                .get())
                 .orElse(null);
     }
 
     @Override
     public User getUsersByLogin(String login) {
-        return Optional.of(this.userDAO.getUserList()
+        return this.userDAO.getUserList()
                 .stream()
                 .filter(user -> login.equals(user.getLogin()))
                 .findFirst()
-                .get())
                 .orElse(null);
     }
 
