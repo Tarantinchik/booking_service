@@ -1,12 +1,11 @@
-package com.bookingservice.services;
+package com.bookingservice.controllers;
 
 import com.bookingservice.models.Flight;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public interface FlightService {
+public interface FlightController {
 
     //CRUD
 
@@ -30,4 +29,5 @@ public interface FlightService {
 
     //Delete Flight
     boolean deleteFlight(Flight flight);
+
 }

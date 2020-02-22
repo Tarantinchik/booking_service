@@ -4,7 +4,6 @@ import com.bookingservice.dao.UserDAO;
 import com.bookingservice.models.User;
 
 import java.util.List;
-import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
 

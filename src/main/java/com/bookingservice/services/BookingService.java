@@ -20,7 +20,7 @@ public interface BookingService {
     Booking getBookingById(Integer id);
 
     //read booking by Booking id
-    Booking getBookingByBookingId(Integer bookingId);
+    Booking getBookingByBookingId(String bookingId);
 
     //read booking by user
     Booking getBookingByUser(User user);
