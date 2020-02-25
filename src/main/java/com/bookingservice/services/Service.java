@@ -12,6 +12,9 @@ public interface Service<T> {
     //readAll/getAll
     List<T> getAll();
 
+    //getById
+    T getById(Class<T> clazz, Integer id);
+
     //update
     T update(List<Object> params);
 

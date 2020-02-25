@@ -63,14 +63,6 @@ public class Main {
                 1, flightController.getAll().get(4), userController.getAll().get(4)
         ));
 
-        userController.getAll().forEach(System.out::println);
-        System.out.println();
-
-        flightController.getAll().forEach(System.out::println);
-        System.out.println();
-
-        bookingController.getAll().forEach(System.out::println);
-        System.out.println();
 
     }
 

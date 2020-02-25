@@ -2,7 +2,6 @@ package com.bookingservice.services;
 
 import com.bookingservice.dao.ObjectDAO;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -18,6 +17,22 @@ public class ServiceImpl<T> implements Service<T> {
     @Override
     public List<T> getAll() {
         return this.objectDAO.getObjList();
+    }
+
+    @Override
+    public T getById(Class<T> clazz, Integer id) {
+        return this.objectDAO.getObjList()
+                .stream()
+                .filter(e -> {
+                    try {
+                        return id.equals(e.getClass().getMethod("getId").invoke(e));
+                    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+                        ex.printStackTrace();
+                    }
+                    return false;
+                })
+                .findFirst()
+                .orElse(null);
     }
 
     @Override

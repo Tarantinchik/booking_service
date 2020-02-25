@@ -20,6 +20,11 @@ public class ControllerImpl<T> implements Controller<T> {
     }
 
     @Override
+    public T getById(Class<T> clazz, Integer id) {
+        return this.service.getById(clazz, id);
+    }
+
+    @Override
     public T update(List<Object> params) {
         return this.service.update(params);
     }

@@ -9,7 +9,6 @@ public class Flight {
 
     private static int countId;
     private int id;
-    private String flightId;
     private int seatsCapacity;
     private int seatsLeft;
     private String cityFrom;
@@ -20,7 +19,6 @@ public class Flight {
 
     public Flight(List<Object> params) {
         this.id = countId++;
-        this.flightId = this.id + "/" + this.hashCode();
         this.seatsCapacity = (int) params.get(0);
         this.seatsLeft = this.seatsCapacity;
         this.cityFrom = (String) params.get(1);
@@ -32,10 +30,6 @@ public class Flight {
 
     public int getId() {
         return id;
-    }
-
-    public String getFlightId() {
-        return flightId;
     }
 
     public int getSeatsCapacity() {
@@ -94,7 +88,6 @@ public class Flight {
     public String toString() {
         return "Flight{" +
                 "id=" + id +
-                ", flightId='" + flightId + '\'' +
                 ", seatsCapacity=" + seatsCapacity +
                 ", seatsLeft=" + seatsLeft +
                 ", cityFrom='" + cityFrom + '\'' +
@@ -110,13 +103,12 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return id == flight.id &&
-                Objects.equals(flightId, flight.flightId);
+        return id == flight.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, flightId);
+        return Objects.hash(id);
     }
 
 }
