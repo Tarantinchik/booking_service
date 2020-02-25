@@ -1,33 +1,45 @@
 package com.bookingservice.models;
 
+import java.util.List;
 import java.util.Objects;
 
-public class User extends SuperUser {
+public class User {
 
     private static int counter = 0;
-    private final int id;
-    private final String firstName;
-    private final String lastName;
+    private int id;
+    private String login;
+    private String password;
+    private String firstName;
+    private String lastName;
     private String phone;
     private String email;
     private int age;
     private String countryResidence;
     private String token;
 
-    public User(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
-        super(login, password);
+    public User(List<Object> params) {
+        this.login = (String) params.get(0);
+        this.password = (String) params.get(1);
         this.id = counter++;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.email = email;
-        this.age = age;
-        this.countryResidence = countryResidence;
+        this.firstName = (String) params.get(2);
+        this.lastName = (String) params.get(3);
+        this.phone = (String) params.get(4);
+        this.email = (String) params.get(5);
+        this.age = (int) params.get(6);
+        this.countryResidence = (String) params.get(7);
         this.token = "";
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getFirstName() {
@@ -88,7 +100,7 @@ public class User extends SuperUser {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", countryResidence='" + countryResidence + '\'' +
-                ", login='" + this.getLogin() + '\'' +
+                ", login='" + login + '\'' +
                 '}';
     }
 
