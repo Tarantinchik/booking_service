@@ -27,7 +27,23 @@ public class ServiceImpl<T> implements Service<T> {
                     try {
                         return id.equals(e.getClass().getMethod("getId").invoke(e));
                     } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
-                        ex.printStackTrace();
+                        System.out.println("Something went wrong!");
+                    }
+                    return false;
+                })
+                .findFirst()
+                .orElse(null);
+    }
+
+    @Override
+    public T getByParam(Class<T> clazz, String method, String param) {
+        return this.objectDAO.getObjList()
+                .stream()
+                .filter(e -> {
+                    try {
+                        return param.equals(e.getClass().getMethod(method).invoke(e));
+                    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+                        System.out.println("Method not found!");
                     }
                     return false;
                 })

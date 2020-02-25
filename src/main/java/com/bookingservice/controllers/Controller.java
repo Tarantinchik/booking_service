@@ -15,6 +15,9 @@ public interface Controller<T> {
     //getById
     T getById(Class<T> clazz, Integer id);
 
+    //getByParam
+    T getByParam(Class<T> clazz, String method, String param);
+
     //update
     T update(List<Object> params);
 

@@ -25,6 +25,11 @@ public class ControllerImpl<T> implements Controller<T> {
     }
 
     @Override
+    public T getByParam(Class<T> clazz, String method, String param) {
+        return this.service.getByParam(clazz, method, param);
+    }
+
+    @Override
     public T update(List<Object> params) {
         return this.service.update(params);
     }

@@ -63,6 +63,10 @@ public class Main {
                 1, flightController.getAll().get(4), userController.getAll().get(4)
         ));
 
+        User user = userController.getByParam(User.class, "getLogin", "Doctor");
+        System.out.println(user);
+
+        //userController.getAll().forEach(System.out::println);
 
     }
 
