@@ -66,7 +66,7 @@ public class Main {
         userController.update(
                 User.class,
                 userController.getById(User.class, 0),
-                Arrays.asList(25, "USA", "gadina@test.com", "300000000"));
+                Arrays.asList(25, "Niger", "gadina@test.com", "300000000"));
 
     }
 

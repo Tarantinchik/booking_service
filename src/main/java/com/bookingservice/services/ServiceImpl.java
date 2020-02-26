@@ -72,31 +72,14 @@ public class ServiceImpl<T> implements Service<T> {
             dataMap.put(setters.get(i), params.get(i));
         }
 
-        try {
-            obj.getClass().getMethod("setAge", Integer.class).invoke(obj, 25);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(obj);
-
-        try {
-            PropertyDescriptor pd = new PropertyDescriptor("age", clazz);
-            pd.getWriteMethod().invoke(obj, 25);
-        } catch (IntrospectionException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
         dataMap.forEach((method, param) -> {
             System.out.println(method + " -> " + param);
             try {
-                clazz.getDeclaredMethod(method, Integer.class).invoke(obj, 25);
+                obj.getClass().getMethod(method, param.getClass()).invoke(obj, param);
             } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException ex) {
                 ex.printStackTrace();
             }
         });
-
         return obj;
     }
 
