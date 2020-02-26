@@ -2,8 +2,15 @@ package com.bookingservice.services;
 
 import com.bookingservice.dao.ObjectDAO;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ServiceImpl<T> implements Service<T> {
 
@@ -52,8 +59,45 @@ public class ServiceImpl<T> implements Service<T> {
     }
 
     @Override
-    public T update(List<Object> params) {
-        return null;
+    public T update(Class<T> clazz, T obj, List<Object> params) throws SecurityException {
+        List<String> setters = Arrays.stream(clazz.getMethods())
+                .filter(method -> method.getName().startsWith("set") && method.getParameterCount() == 1 && !"setToken".equals(method.getName()))
+                .map(Method::getName)
+                .sorted()
+                .collect(Collectors.toList());
+
+        Map<String, Object> dataMap = new HashMap<>();
+
+        for (int i = 0; i < setters.size(); i++) {
+            dataMap.put(setters.get(i), params.get(i));
+        }
+
+        try {
+            obj.getClass().getMethod("setAge", Integer.class).invoke(obj, 25);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(obj);
+
+        try {
+            PropertyDescriptor pd = new PropertyDescriptor("age", clazz);
+            pd.getWriteMethod().invoke(obj, 25);
+        } catch (IntrospectionException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        dataMap.forEach((method, param) -> {
+            System.out.println(method + " -> " + param);
+            try {
+                clazz.getDeclaredMethod(method, Integer.class).invoke(obj, 25);
+            } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        return obj;
     }
 
     @Override

@@ -30,9 +30,10 @@ public class ControllerImpl<T> implements Controller<T> {
     }
 
     @Override
-    public T update(List<Object> params) {
-        return this.service.update(params);
+    public T update(Class<T> clazz, T obj, List<Object> params) {
+        return this.service.update(clazz, obj, params);
     }
+
 
     @Override
     public boolean delete(T obj) {

@@ -19,7 +19,7 @@ public interface Controller<T> {
     T getByParam(Class<T> clazz, String method, String param);
 
     //update
-    T update(List<Object> params);
+    T update(Class<T> clazz, T obj, List<Object> params);
 
     //delete
     boolean delete(T obj);

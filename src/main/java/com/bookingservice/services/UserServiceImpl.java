@@ -4,7 +4,7 @@ import com.bookingservice.models.User;
 
 import java.util.List;
 
-public class UserServiceImpl {
+public class UserServiceImpl extends ServiceImpl<User> {
 
 //    private UserDAO userDAO = new UserDAO();
 //

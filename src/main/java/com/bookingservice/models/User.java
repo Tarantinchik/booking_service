@@ -13,7 +13,7 @@ public class User {
     private String lastName;
     private String phone;
     private String email;
-    private int age;
+    private Integer age;
     private String countryResidence;
     private String token;
 
@@ -78,7 +78,7 @@ public class User {
         this.email = email;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
