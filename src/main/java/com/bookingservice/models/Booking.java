@@ -51,7 +51,7 @@ public class Booking {
         return "Booking{" +
                 ", seatsBooked=" + seatsBooked +
                 ", flight=" + flight +
-                ", user=" + user +
+                //", user=" + user +
                 '}';
     }
 

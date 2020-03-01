@@ -1,6 +1,8 @@
 package com.bookingservice.services;
 
 import com.bookingservice.dao.ObjectDAO;
+import com.bookingservice.models.Booking;
+import com.bookingservice.models.User;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
@@ -11,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class ServiceImpl<T> implements Service<T> {
 
@@ -27,7 +31,7 @@ public class ServiceImpl<T> implements Service<T> {
     }
 
     @Override
-    public T getById(Class<T> clazz, Integer id) {
+    public T getById(Integer id) {
         return this.objectDAO.getObjList()
                 .stream()
                 .filter(e -> {
@@ -43,7 +47,7 @@ public class ServiceImpl<T> implements Service<T> {
     }
 
     @Override
-    public T getByParam(Class<T> clazz, String method, String param) {
+    public T getByParam(String method, String param) {
         return this.objectDAO.getObjList()
                 .stream()
                 .filter(e -> {
@@ -59,12 +63,27 @@ public class ServiceImpl<T> implements Service<T> {
     }
 
     @Override
-    public T update(Class<T> clazz, T obj, List<Object> params) throws SecurityException {
-        List<String> setters = Arrays.stream(clazz.getMethods())
+    public List<T> getByUser(User user) {
+        return this.objectDAO.getObjList()
+                .stream()
+                .filter(booking -> {
+                    try {
+                        return user.equals(Booking.class.getMethod("getUser").invoke(booking));
+                    } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+                        System.out.println("Method not found!");
+                    }
+                    return false;
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public T update(T obj, List<Object> params) throws SecurityException {
+        List<String> setters = Arrays.stream(obj.getClass().getMethods())
                 .filter(method -> method.getName().startsWith("set") && method.getParameterCount() == 1 && !"setToken".equals(method.getName()))
                 .map(Method::getName)
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(toList());
 
         Map<String, Object> dataMap = new HashMap<>();
 
@@ -73,11 +92,10 @@ public class ServiceImpl<T> implements Service<T> {
         }
 
         dataMap.forEach((method, param) -> {
-            System.out.println(method + " -> " + param);
             try {
                 obj.getClass().getMethod(method, param.getClass()).invoke(obj, param);
             } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException ex) {
-                ex.printStackTrace();
+                System.out.println("Something went wrong!");
             }
         });
         return obj;

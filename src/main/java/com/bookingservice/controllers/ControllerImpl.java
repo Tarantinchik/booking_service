@@ -1,5 +1,6 @@
 package com.bookingservice.controllers;
 
+import com.bookingservice.models.User;
 import com.bookingservice.services.ServiceImpl;
 
 import java.lang.reflect.InvocationTargetException;
@@ -20,18 +21,23 @@ public class ControllerImpl<T> implements Controller<T> {
     }
 
     @Override
-    public T getById(Class<T> clazz, Integer id) {
-        return this.service.getById(clazz, id);
+    public T getById(Integer id) {
+        return this.service.getById(id);
     }
 
     @Override
-    public T getByParam(Class<T> clazz, String method, String param) {
-        return this.service.getByParam(clazz, method, param);
+    public T getByParam(String method, String param) {
+        return this.service.getByParam(method, param);
     }
 
     @Override
-    public T update(Class<T> clazz, T obj, List<Object> params) {
-        return this.service.update(clazz, obj, params);
+    public List<T> getByUser(User user) {
+        return this.service.getByUser(user);
+    }
+
+    @Override
+    public T update(T obj, List<Object> params) {
+        return this.service.update(obj, params);
     }
 
 

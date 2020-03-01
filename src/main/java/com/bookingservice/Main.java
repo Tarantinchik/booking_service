@@ -4,9 +4,12 @@ import com.bookingservice.controllers.ControllerImpl;
 import com.bookingservice.models.Booking;
 import com.bookingservice.models.Flight;
 import com.bookingservice.models.User;
+import com.bookingservice.utils.Auth;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -51,6 +54,9 @@ public class Main {
                 1, flightController.getAll().get(0), userController.getAll().get(0)
         ));
         bookingController.create(Booking.class, Arrays.asList(
+                2, flightController.getAll().get(3), userController.getById(0) //!!!!!!
+        ));
+        bookingController.create(Booking.class, Arrays.asList(
                 2, flightController.getAll().get(1), userController.getAll().get(1)
         ));
         bookingController.create(Booking.class, Arrays.asList(
@@ -63,10 +69,21 @@ public class Main {
                 1, flightController.getAll().get(4), userController.getAll().get(4)
         ));
 
-        userController.update(
-                User.class,
-                userController.getById(User.class, 0),
-                Arrays.asList(25, "Niger", "gadina@test.com", "300000000"));
+       /* ----------------------------------------------------------------------------------------------------------- */
+
+        Auth auth = new Auth(new User());
+
+        //auth.setUser(userController.getById(0));
+
+        while(true) {
+            if (!auth.getUser().getToken().equals("") && auth.getUser().getToken().equals(String.valueOf(auth.getUser().hashCode()))) {
+                List<Booking> userBookingList = bookingController.getByUser(auth.getUser());
+                userBookingList.forEach(System.out::println);
+            } else {
+                flightController.getAll().forEach(System.out::println);
+            }
+        }
+
 
     }
 

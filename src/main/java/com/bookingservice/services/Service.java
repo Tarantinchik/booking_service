@@ -1,5 +1,8 @@
 package com.bookingservice.services;
 
+import com.bookingservice.models.Booking;
+import com.bookingservice.models.User;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
@@ -13,13 +16,16 @@ public interface Service<T> {
     List<T> getAll();
 
     //getById
-    T getById(Class<T> clazz, Integer id);
+    T getById(Integer id);
 
     //getByParam
-    T getByParam(Class<T> clazz, String method, String param);
+    T getByParam(String method, String param);
+
+    //get by User
+    List<T> getByUser(User user);
 
     //update
-    T update(Class<T> clazz, T obj, List<Object> params);
+    T update(T obj, List<Object> params);
 
     //delete
     boolean delete(T obj);

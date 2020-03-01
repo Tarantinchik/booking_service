@@ -30,6 +30,19 @@ public class User {
         this.token = "";
     }
 
+    public User() {
+        this.login = "Unknown";
+        this.password = "Unknown";
+        this.id = -1;
+        this.firstName = "Guest";
+        this.lastName = "Guest";
+        this.phone = "Unknown";
+        this.email = "Unknown";
+        this.age = 0;
+        this.countryResidence = "Unknown"; //!!!!!!!!!
+        this.token = "";
+    }
+
     public int getId() {
         return id;
     }
