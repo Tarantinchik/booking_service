@@ -5,6 +5,7 @@ import com.bookingservice.models.Booking;
 import com.bookingservice.models.Flight;
 import com.bookingservice.models.User;
 import com.bookingservice.utils.Auth;
+import com.bookingservice.utils.FileReader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -71,18 +72,29 @@ public class Main {
 
        /* ----------------------------------------------------------------------------------------------------------- */
 
-        Auth auth = new Auth(new User());
+//        Auth auth = new Auth(new User());
+//
+//        auth.setUser(userController.getById(0));
+//
+//        while(true) {
+//            if (!auth.getUser().getToken().equals("") && auth.getUser().getToken().equals(String.valueOf(auth.getUser().hashCode()))) {
+//                List<Booking> userBookingList = bookingController.getByUser(auth.getUser());
+//                userBookingList.forEach(System.out::println);
+//
+//                System.out.println();
+//                System.out.println();
+//                System.out.println();
+//                System.out.println();
+//                flightController.getAll().forEach(System.out::println);
+//            } else {
+//                flightController.getAll().forEach(System.out::println);
+//            }
+//            System.out.println();
+//        }
 
-        //auth.setUser(userController.getById(0));
-
-        while(true) {
-            if (!auth.getUser().getToken().equals("") && auth.getUser().getToken().equals(String.valueOf(auth.getUser().hashCode()))) {
-                List<Booking> userBookingList = bookingController.getByUser(auth.getUser());
-                userBookingList.forEach(System.out::println);
-            } else {
-                flightController.getAll().forEach(System.out::println);
-            }
-        }
+        FileReader fileReader = new FileReader("src/main/data/users.txt");
+        List<User> objectList = fileReader.getObjectList();
+        objectList.forEach(System.out::println);
 
 
     }

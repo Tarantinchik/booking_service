@@ -1,0 +1,5 @@
+Murka 1234567 Saha Gulieva 34567843 saha@test.com 34 Uzbekistan
+Kapitoshka 1234567 Dasha Gromova 345645327 iza@test.com 24 Belorussia
+Doctor 1234567 Kirill Ivanov 345645324 kira@test.com 29 Bulgaria
+Hirurg 1234567 Igor Britskiy 345645321 igor@test.com 39 Ukraine
+Umnik 1234567 Alex Shvartc 345645329 alex@gmail.com 49 USA

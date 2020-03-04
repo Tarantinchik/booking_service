@@ -33,7 +33,7 @@ public class User {
     public User() {
         this.login = "Unknown";
         this.password = "Unknown";
-        this.id = -1;
+        this.id = -1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         this.firstName = "Guest";
         this.lastName = "Guest";
         this.phone = "Unknown";
