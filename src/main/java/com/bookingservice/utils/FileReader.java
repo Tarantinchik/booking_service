@@ -1,8 +1,5 @@
 package com.bookingservice.utils;
 
-import com.bookingservice.controllers.ControllerImpl;
-import com.bookingservice.models.User;
-
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -11,7 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
