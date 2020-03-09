@@ -93,7 +93,7 @@ public class Main {
 //        }
 
         FileReader fileReader = new FileReader("src/main/data/users.txt");
-        List<User> objectList = fileReader.getObjectList();
+        List<User> objectList = fileReader.getObjectList(User.class);
         objectList.forEach(System.out::println);
 
 

@@ -17,15 +17,15 @@ public class Flight {
     private LocalDate dateTo;
     private double price;
 
-    public Flight(List<Object> params) {
+    public Flight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
         this.id = countId++;
-        this.seatsCapacity = (int) params.get(0);
-        this.seatsLeft = this.seatsCapacity;
-        this.cityFrom = (String) params.get(1);
-        this.cityTo = (String) params.get(2);
-        this.dateFrom = LocalDate.parse((String)params.get(3), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        this.dateTo = LocalDate.parse((String)params.get(4), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        this.price = (double) params.get(5);
+        this.seatsCapacity = seatsCapacity;
+        this.seatsLeft = seatsCapacity;
+        this.cityFrom = cityFrom;
+        this.cityTo = cityTo;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.price = price;
     }
 
     public int getId() {

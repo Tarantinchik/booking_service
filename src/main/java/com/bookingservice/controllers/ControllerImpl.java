@@ -1,7 +1,6 @@
 package com.bookingservice.controllers;
 
 import com.bookingservice.models.User;
-import com.bookingservice.services.ServiceImpl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

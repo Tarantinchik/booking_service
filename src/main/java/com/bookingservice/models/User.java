@@ -17,17 +17,15 @@ public class User {
     private String countryResidence;
     private String token;
 
-    public User(List<Object> params) {
-        this.login = (String) params.get(0);
-        this.password = (String) params.get(1);
-        this.id = counter++;
-        this.firstName = (String) params.get(2);
-        this.lastName = (String) params.get(3);
-        this.phone = (String) params.get(4);
-        this.email = (String) params.get(5);
-        this.age = (int) params.get(6);
-        this.countryResidence = (String) params.get(7);
-        this.token = "";
+    public User(String login, String password, String firstName, String lastName, String phone, String email, Integer age, String countryResidence) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.age = age;
+        this.countryResidence = countryResidence;
     }
 
     public User() {
@@ -107,13 +105,14 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", countryResidence='" + countryResidence + '\'' +
-                ", login='" + login + '\'' +
                 '}';
     }
 

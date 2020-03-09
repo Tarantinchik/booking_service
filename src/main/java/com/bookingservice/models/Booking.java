@@ -1,6 +1,5 @@
 package com.bookingservice.models;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Booking {
@@ -11,11 +10,11 @@ public class Booking {
     private Flight flight;
     private User user;
 
-    public Booking(List<Object> params) {
+    public Booking(int seatsBooked, Flight flight, User user) {
         this.id = counter++;
-        this.seatsBooked = (int) params.get(0);
-        this.flight = (Flight) params.get(1);
-        this.user = (User) params.get(2);
+        this.seatsBooked = seatsBooked;
+        this.flight = flight;
+        this.user = user;
     }
 
     public int getId() {
@@ -67,4 +66,5 @@ public class Booking {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
