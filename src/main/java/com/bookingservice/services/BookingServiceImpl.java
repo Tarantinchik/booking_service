@@ -12,6 +12,11 @@ public class BookingServiceImpl implements BookingService {
    private BookingDAO bookingDAO = new BookingDAO();
 
     @Override
+    public boolean addBooking(Booking booking) {
+        return this.bookingDAO.addBooking(booking);
+    }
+
+    @Override
     public Booking createBooking(int seatsBooked, Flight flight, User user) {
         return new Booking(seatsBooked, flight, user);
     }

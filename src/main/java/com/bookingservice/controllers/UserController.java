@@ -8,6 +8,9 @@ public interface UserController {
 
     //CRUD
 
+    //add
+    boolean addUser(User user);
+
     //create
     User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence);
 

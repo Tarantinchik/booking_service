@@ -8,6 +8,9 @@ public interface UserService {
 
     //CRUD
 
+    //add
+    boolean addUser(User user);
+
     //create
     User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence);
 
@@ -30,6 +33,6 @@ public interface UserService {
     User updateUser(List<String> data);
 
     //delete
-    boolean deleteUser(User booking);
+    boolean deleteUser(User user);
 
 }

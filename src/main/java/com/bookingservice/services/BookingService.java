@@ -9,6 +9,9 @@ import java.util.List;
 public interface BookingService {
     //CRUD
 
+    //add
+    boolean addBooking(Booking booking);
+
     //create
     Booking createBooking(int seatsBooked, Flight flight, User user);
 

@@ -9,6 +9,10 @@ public class UserServiceImpl implements UserService {
 
     private UserDAO userDAO = new UserDAO();
 
+    @Override
+    public boolean addUser(User user) {
+        return this.userDAO.addUser(user);
+    }
 
     @Override
     public User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
@@ -17,22 +21,34 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        return this.userDAO.getUserList();
     }
 
     @Override
     public User getUserById(Integer id) {
-        return null;
+        return this.userDAO.getUserList()
+                .stream()
+                .filter(user -> id.equals(user.getId()))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public User getUserByLogin(String login) {
-        return null;
+        return this.userDAO.getUserList()
+                .stream()
+                .filter(user -> login.equals(user.getLogin()))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public User getUserByLoginAndPassword(String login, String password) {
-        return null;
+        return this.userDAO.getUserList()
+                .stream()
+                .filter(user -> login.equals(user.getLogin()) && password.equals(user.getPassword()))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -46,7 +62,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteUser(User booking) {
-        return false;
+    public boolean deleteUser(User user) {
+        return this.userDAO.deleteUser(user);
     }
+
 }

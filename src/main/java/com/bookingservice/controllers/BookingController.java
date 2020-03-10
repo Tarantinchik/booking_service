@@ -10,6 +10,9 @@ public interface BookingController {
 
     //CRUD
 
+    //add
+    boolean addBooking(Booking booking);
+
     //create
     Booking createBooking(int seatsBooked, Flight flight, User user);
 

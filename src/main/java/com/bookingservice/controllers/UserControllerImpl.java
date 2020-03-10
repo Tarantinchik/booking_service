@@ -10,6 +10,11 @@ public class UserControllerImpl implements UserController {
     private UserServiceImpl userService = new UserServiceImpl();
 
     @Override
+    public boolean addUser(User user) {
+        return this.userService.addUser(user);
+    }
+
+    @Override
     public User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
         return this.userService.createUser(login, password, firstName, lastName, phone, email, age, countryResidence);
     }

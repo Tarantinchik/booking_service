@@ -13,11 +13,11 @@ public class UserDAO {
         return this.userList;
     }
 
-    public boolean add(User obj) {
+    public boolean addUser(User obj) {
         return this.userList.add(obj);
     }
 
-    public boolean delete(User obj) {
+    public boolean deleteUser(User obj) {
         return this.userList.remove(obj);
     }
 

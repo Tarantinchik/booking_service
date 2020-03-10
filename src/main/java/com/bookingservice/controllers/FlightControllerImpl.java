@@ -12,6 +12,11 @@ public class FlightControllerImpl implements FlightController {
 
 
     @Override
+    public boolean addFlight(Flight flight) {
+        return this.flightService.addFlight(flight);
+    }
+
+    @Override
     public Flight createFlight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
         return this.flightService.createFlight(seatsCapacity, cityFrom, cityTo, dateFrom, dateTo, price);
     }
