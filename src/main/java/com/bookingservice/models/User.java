@@ -18,6 +18,7 @@ public class User {
     private String token;
 
     public User(String login, String password, String firstName, String lastName, String phone, String email, Integer age, String countryResidence) {
+        this.id = counter++;
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -26,6 +27,7 @@ public class User {
         this.email = email;
         this.age = age;
         this.countryResidence = countryResidence;
+        this.token = "";
     }
 
     public User() {

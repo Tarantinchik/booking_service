@@ -56,6 +56,22 @@ public class Main {
 //            System.out.println();
 //        }
 
+        UserControllerImpl userController = new UserControllerImpl();
+        BookingControllerImpl bookingController = new BookingControllerImpl();
+        FlightControllerImpl flightController = new FlightControllerImpl();
+
+        FileReaderImpl fileReader = new FileReaderImpl();
+        boolean isUsersAdded = fileReader.addUsers("src/main/data/users.txt", userController);
+        boolean isFlightsAdded = fileReader.addFlights("src/main/data/flights.txt", flightController);
+        boolean isBookingsAdded = fileReader.addBookings("src/main/data/booking.txt", bookingController, flightController, userController);
+
+        System.out.println(isUsersAdded);
+
+        userController.getAllUsers().forEach(System.out::println);
+        System.out.println();
+        flightController.getAllFlights().forEach(System.out::println);
+        System.out.println();
+        bookingController.getAllBookings().forEach(System.out::println);
     }
 
 }

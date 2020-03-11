@@ -1,16 +1,15 @@
 package com.bookingservice.utils;
 
-import com.bookingservice.models.Flight;
-import com.bookingservice.models.User;
-
-import java.util.List;
+import com.bookingservice.controllers.BookingControllerImpl;
+import com.bookingservice.controllers.FlightControllerImpl;
+import com.bookingservice.controllers.UserControllerImpl;
 
 public interface FileReader {
 
-    boolean addUsers();
+    boolean addUsers(String filePath, UserControllerImpl userController);
 
-    boolean addFlights();
+    boolean addFlights(String filePath, FlightControllerImpl flightController);
 
-    boolean addBookings();
+    boolean addBookings(String filePath, BookingControllerImpl bookingController, FlightControllerImpl flightController, UserControllerImpl userController);
 
 }
