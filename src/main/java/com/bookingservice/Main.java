@@ -24,6 +24,8 @@ public class Main {
         boolean isBookingsAdded = fileReader.addBookings("src/main/data/bookings.txt", bookingController, flightController, userController);
 
         System.out.println(isUsersAdded);
+        System.out.println(isFlightsAdded);
+        System.out.println(isBookingsAdded);
 
         userController.getAllUsers().forEach(System.out::println);
         System.out.println();
