@@ -18,6 +18,9 @@ public class Main {
         BookingControllerImpl bookingController = new BookingControllerImpl();
         FlightControllerImpl flightController = new FlightControllerImpl();
 
+        //TODO
+        //Реализовать автосоздание тестовых рейсов с датами от СЕГОДНЯ, сохраняя при этом архив старых
+
         FileReaderImpl fileReader = new FileReaderImpl();
         boolean isUsersAdded = fileReader.addUsers("src/main/data/users.txt", userController);
         boolean isFlightsAdded = fileReader.addFlights("src/main/data/flights.txt", flightController);
