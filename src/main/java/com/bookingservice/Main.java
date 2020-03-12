@@ -19,7 +19,7 @@ public class Main {
         FlightControllerImpl flightController = new FlightControllerImpl();
 
         //TODO
-        //Добавить в файл flights.txt 25 новых рейсов
+        //Добавить в файл bookings.txt 45 новых заказов
 
         FileReaderImpl fileReader = new FileReaderImpl();
         boolean isUsersAdded = fileReader.addUsers("src/main/data/users.txt", userController);
