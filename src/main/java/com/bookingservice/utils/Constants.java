@@ -22,6 +22,8 @@ public interface Constants {
 
     String INVALID_DATA = "Invalid data!";
 
+    String USER_UNKNOWN = "User unknown. Select Registration Service!";
+
     String CITY_FROM = "Kiev";
 
     String[] CITIES_TO = {

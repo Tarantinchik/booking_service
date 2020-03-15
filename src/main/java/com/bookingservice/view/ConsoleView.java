@@ -17,8 +17,7 @@ public class ConsoleView {
     private FlightControllerImpl flightController = new FlightControllerImpl();
     private BookingControllerImpl bookingController = new BookingControllerImpl();
     private UserControllerImpl userController = new UserControllerImpl();
-    private Scanner scanner;
-    private int sessionId = 0;
+    //private int sessionId = 0;
     private User user = new User();
     //private Logger logger = new Logger();
 
@@ -32,23 +31,28 @@ public class ConsoleView {
         fileReader.addFlights(DATA_FILE_FLIGHTS, flightController);
         fileReader.addBookings(DATA_FILE_BOOKINGS, bookingController, flightController, userController);
 
-
-        Auth auth = new Auth(new User());
         String selectConsole = "";
         while (true) {
-            System.out.println("[Flight booking service]");
+            System.out.println("[Flight booking service]\n");
+            System.out.println("Hi, " + this.user.getFirstName() + " " + this.user.getLastName() + "\n");
             System.out.println("Choose action: ");
             System.out.println("[0] - Exit");
             System.out.println("[1] - Online scoreboard");
             System.out.println("[2] - View flight information");
-            System.out.println("[3] - Search flight by data and booking" + (this.sessionId != 0 ? " [Session id: " + this.sessionId + "]" : " [" + this.user.getFirstName() + " " + this.user.getLastName() + "]"));
-            System.out.println("[4] - Cancel booking" + (this.sessionId != 0 ? " [Session id: " + this.sessionId + "]" : " [" + this.user.getFirstName() + " " + this.user.getLastName() + "]"));
-            System.out.println("[5] - Show user flights " + (this.sessionId != 0 ? " [Session id: " + this.sessionId + "]" : " [" + this.user.getFirstName() + " " + this.user.getLastName() + "]"));
-            System.out.println("[6] - " + (this.sessionId == 0 ? "Log in" : "Log out [Session id: " + this.sessionId + "]"));
-            System.out.println((this.sessionId == 0 ? "[7] - Registration" : ""));
+
+            if (!this.user.getToken().equals("")) {
+                System.out.println("[3] - Search flight by data and booking");
+                System.out.println("[4] - Cancel booking");
+                System.out.println("[5] - Show user flights");
+                System.out.println("[6] - Log out [Token: " + this.user.getToken() + "]");
+            } else {
+                System.out.println("[6] - Log in");
+                System.out.println("[7] - Registration");
+            }
             System.out.print("\nChoose your action: ");
-            this.scanner = new Scanner(System.in);
-            selectConsole = this.scanner.nextLine();
+
+            Scanner scanner = new Scanner(System.in);
+            selectConsole = scanner.nextLine();
             if (selectConsole.equals(EXIT)) {
                 System.out.println("Thank you for using our service!");
                 break;
@@ -84,11 +88,7 @@ public class ConsoleView {
                 actionUserLogInOut();
                 break;
             case "7":
-                if (this.sessionId == 0) {
-                    actionRegistration();
-                } else {
-                    System.out.println("Unknown action!");
-                }
+                actionRegistration();
                 break;
             default:
                 System.out.println("Unknown action!");
@@ -100,6 +100,7 @@ public class ConsoleView {
      * Shows all flights next Time
      */
     private void actionOnlineScoreboard() {
+        this.flightController.getAllFlights().forEach(System.out::println);
     }
 
     /**
@@ -107,6 +108,9 @@ public class ConsoleView {
      */
     private void actionViewFlightInfo() {
         System.out.println("\n\n[View flight information]");
+        Scanner scanner = new Scanner(System.in);
+        Integer id = scanner.nextInt();
+        System.out.println(this.flightController.getFlightById(id));
     }
 
     /**
@@ -140,6 +144,24 @@ public class ConsoleView {
      * Makes Log In/Out for users
      */
     private void actionUserLogInOut() {
+        if(!this.user.getToken().equals("")) {
+            this.user = new User();
+        } else {
+            System.out.println("\n\n[Input login and password]");
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Login: ");
+            String login = scanner.nextLine();
+            System.out.print("Password: ");
+            String password = scanner.nextLine();
+
+            User logInUser = this.userController.getUserByLoginAndPassword(login, password);
+            if (logInUser != null) {
+                this.user = logInUser;
+                this.user.setToken(String.valueOf(this.user.hashCode()));
+            } else {
+                System.out.println(USER_UNKNOWN);
+            }
+        }
     }
 
     /**

@@ -39,7 +39,7 @@ public class User {
         this.phone = "Unknown";
         this.email = "Unknown";
         this.age = 0;
-        this.countryResidence = "Unknown"; //!!!!!!!!!
+        this.countryResidence = "Unknown"; //!!!!!!!!! Country -> IP
         this.token = "";
     }
 

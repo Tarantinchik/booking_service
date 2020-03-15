@@ -36,12 +36,12 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public User getUserByLoginAndPassword(String login, String password) {
-        return getUserByLoginAndPassword(login, password);
+        return this.userService.getUserByLoginAndPassword(login, password);
     }
 
     @Override
     public List<User> getUserByParams(List<String> params) {
-        return getUserByParams(params);
+        return this.userService.getUserByParams(params);
     }
 
     @Override
@@ -51,6 +51,6 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public boolean deleteUser(User booking) {
-        return deleteUser(booking);
+        return this.userService.deleteUser(booking);
     }
 }
