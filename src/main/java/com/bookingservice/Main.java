@@ -22,9 +22,9 @@ public class Main {
         //Добавить в файл flights.txt 25 новых рейсов
 
         FileReaderImpl fileReader = new FileReaderImpl();
-        boolean isUsersAdded = fileReader.addUsers("src/main/data/users.txt", userController);
-        boolean isFlightsAdded = fileReader.addFlights("src/main/data/flights.txt", flightController);
-        boolean isBookingsAdded = fileReader.addBookings("src/main/data/bookings.txt", bookingController, flightController, userController);
+        boolean isUsersAdded = fileReader.addUsers("data/users.txt", userController);
+        boolean isFlightsAdded = fileReader.addFlights("data/flights.txt", flightController);
+        boolean isBookingsAdded = fileReader.addBookings("data/bookings.txt", bookingController, flightController, userController);
 
         System.out.println(isUsersAdded);
         System.out.println(isFlightsAdded);
