@@ -1,12 +1,10 @@
 package com.bookingservice.models;
 
-import java.util.List;
 import java.util.Objects;
 
 public class User {
 
-    private static int counter = 0;
-    private int id;
+    private final Integer id;
     private String login;
     private String password;
     private String firstName;
@@ -17,8 +15,8 @@ public class User {
     private String countryResidence;
     private String token;
 
-    public User(String login, String password, String firstName, String lastName, String phone, String email, Integer age, String countryResidence) {
-        this.id = counter++;
+    public User(Integer id, String login, String password, String firstName, String lastName, String phone, String email, Integer age, String countryResidence) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.firstName = firstName;

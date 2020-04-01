@@ -17,8 +17,9 @@ public class ConsoleView {
     private FlightControllerImpl flightController = new FlightControllerImpl();
     private BookingControllerImpl bookingController = new BookingControllerImpl();
     private UserControllerImpl userController = new UserControllerImpl();
-    //private int sessionId = 0;
     private User user = new User();
+    private Auth auth = new Auth(user, this.userController);
+    //private int sessionId = 0;
     //private Logger logger = new Logger();
 
     /**
@@ -167,7 +168,30 @@ public class ConsoleView {
     /**
      * Makes registration of new users
      */
-    private void actionRegistration() {
+    private boolean actionRegistration() {
+        System.out.println("\n\n[Registration service]");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Login: ");
+        String login = scanner.nextLine();
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+        System.out.print("First name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Last name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Phone: ");
+        String phone = scanner.nextLine();
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+        System.out.print("Age: ");
+        String ageStr = scanner.nextLine();
+        int age = Integer.parseInt(ageStr);
+        System.out.print("Country residence: ");
+        String countryResidence = scanner.nextLine();
+        return true;
+
+//        return this.auth.registration(id, login, password, firstName, lastName, phone, email, age, countryResidence);
     }
 
     /**

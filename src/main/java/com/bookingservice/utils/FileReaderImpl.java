@@ -20,26 +20,26 @@ public class FileReaderImpl implements FileReader {
 
     @Override
     public boolean addUsers(String filePath, UserControllerImpl userController) {
-        try(Stream<String> stream = Files.lines(Paths.get(filePath))) {
-            stream.forEach(e -> {
-                String[] paramsStr = e.split(" ");
-                List<String> paramsList = Arrays.asList(paramsStr);
-                User user = userController.createUser(
-                        paramsList.get(0),
-                        paramsList.get(1),
-                        paramsList.get(2),
-                        paramsList.get(3),
-                        paramsList.get(4),
-                        paramsList.get(5),
-                        Integer.parseInt(paramsList.get(6)),
-                        paramsList.get(7)
-                );
-                userController.addUser(user);
-            });
-        } catch (IOException e) {
-            System.out.println("Error!");
-            return false;
-        }
+//        try(Stream<String> stream = Files.lines(Paths.get(filePath))) {
+//            stream.forEach(e -> {
+//                String[] paramsStr = e.split(" ");
+//                List<String> paramsList = Arrays.asList(paramsStr);
+//                User user = userController.createUser(
+//                        paramsList.get(0),
+//                        paramsList.get(1),
+//                        paramsList.get(2),
+//                        paramsList.get(3),
+//                        paramsList.get(4),
+//                        paramsList.get(5),
+//                        Integer.parseInt(paramsList.get(6)),
+//                        paramsList.get(7)
+//                );
+//                userController.addUser(user);
+//            });
+//        } catch (IOException e) {
+//            System.out.println("Error!");
+//            return false;
+//        }
         return true;
     }
 

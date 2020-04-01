@@ -12,7 +12,7 @@ public interface UserService {
     boolean addUser(User user);
 
     //create
-    User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence);
+    User createUser(int id, String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence);
 
     //readAll
     List<User> getAllUsers();

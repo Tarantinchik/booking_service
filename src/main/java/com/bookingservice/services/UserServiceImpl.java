@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
-        return new User(login, password, firstName, lastName, phone, email, age, countryResidence);
+    public User createUser(int id, String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
+        return new User(id, login, password, firstName, lastName, phone, email, age, countryResidence);
     }
 
     @Override
