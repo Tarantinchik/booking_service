@@ -1,9 +1,10 @@
 package com.bookingservice;
 
+import com.bookingservice.controllers.BookingControllerImpl;
+import com.bookingservice.controllers.FlightControllerImpl;
+import com.bookingservice.controllers.UserControllerImpl;
 import com.bookingservice.db.DBConnector;
 import com.bookingservice.db.DBWorker;
-import com.bookingservice.models.Flight;
-import com.bookingservice.models.User;
 import com.bookingservice.utils.EncryptDecrypt;
 import com.bookingservice.view.ConsoleView;
 
@@ -15,20 +16,30 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, NoSuchPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException {
+    public static void main(String[] args) throws NoSuchPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, SQLException {
+
+        UserControllerImpl userController = new UserControllerImpl();
+        FlightControllerImpl flightController = new FlightControllerImpl();
+        BookingControllerImpl bookingController = new BookingControllerImpl();
 
         //new ConsoleView().run();
         DBConnector connector = new DBConnector();
-        DBWorker worker = new DBWorker(connector.getDBConnection());
-        List<User> usersFromDB = worker.getUsersFromDB();
-        //usersFromDB.forEach(System.out::println);
+        DBWorker worker = new DBWorker(connector.getDBConnection(), userController, flightController, bookingController);
 
-        List<Flight> flightsFromDB = worker.getFlightsFromDB();
-        flightsFromDB.forEach(System.out::println);
+        worker.getUsersFromDB();
+        userController.getAllUsers().forEach(System.out::println);
+        System.out.println();
+
+        worker.getFlightsFromDB();
+        flightController.getAllFlights().forEach(System.out::println);
+        System.out.println();
+
+        worker.getBookingsFromDB();
+        bookingController.getAllBookings().forEach(System.out::println);
+        System.out.println();
 
         EncryptDecrypt encryptDecrypt = new EncryptDecrypt();
         String password = "1234567890";

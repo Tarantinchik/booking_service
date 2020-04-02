@@ -1,7 +1,10 @@
 package com.bookingservice.db;
 
+import com.bookingservice.controllers.*;
+import com.bookingservice.dao.BookingDAO;
 import com.bookingservice.dao.FlightDAO;
 import com.bookingservice.dao.UserDAO;
+import com.bookingservice.models.Booking;
 import com.bookingservice.models.Flight;
 import com.bookingservice.models.User;
 
@@ -14,20 +17,24 @@ public class DBWorker {
     private final Connection connection;
     private PreparedStatement ps;
     private ResultSet resultSet;
-    String query;
-    private UserDAO userDAO = new UserDAO();
-    private FlightDAO flightDAO = new FlightDAO();
+    private String query;
 
-    public DBWorker(Connection connection) {
+    private UserControllerImpl userController;
+    private FlightControllerImpl flightController;
+    private BookingControllerImpl bookingController;
+
+    public DBWorker(Connection connection, UserControllerImpl userController, FlightControllerImpl flightController, BookingControllerImpl bookingController) {
         this.connection = connection;
+        this.userController = userController;
+        this.flightController = flightController;
+        this.bookingController = bookingController;
     }
 
     public Connection getConnection() {
         return connection;
     }
 
-    public List<User> getUsersFromDB() throws SQLException {
-        List<User> userList = new ArrayList<>();
+    public void getUsersFromDB() throws SQLException {
         String query = "SELECT * FROM users;";
         ps = connection.prepareStatement(query);
         resultSet = ps.executeQuery();
@@ -43,14 +50,12 @@ public class DBWorker {
                     resultSet.getInt("age"),
                     resultSet.getString("country_residence")
             );
-            userList.add(user);
+            userController.addUser(user);
         }
-        userDAO.getUserList().addAll(userList);
-        return userList;
     }
 
-    public List<Flight> getFlightsFromDB() throws SQLException {
-        List<Flight> flights = new ArrayList<>();
+    public void getFlightsFromDB() throws SQLException {
+        List<Flight> flightList = new ArrayList<>();
         query = "SELECT * FROM flights;";
         ps = connection.prepareStatement(query);
         resultSet = ps.executeQuery();
@@ -65,9 +70,25 @@ public class DBWorker {
                     resultSet.getString("date_to"),
                     resultSet.getDouble("price")
             );
-            flights.add(flight);
+            flightController.addFlight(flight);
         }
-        flightDAO.getFlightList().addAll(flights);
-        return flights;
+    }
+
+    public void getBookingsFromDB() throws SQLException {
+        List<Booking> bookingList = new ArrayList<>();
+        query = "SELECT * FROM bookings;";
+        ps = connection.prepareStatement(query);
+        resultSet = ps.executeQuery();
+        while (resultSet.next()) {
+            Flight flight = flightController.getFlightById(resultSet.getInt("flight_id"));
+            User user = userController.getUserById(resultSet.getInt("user_id"));
+            Booking booking = new Booking(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("seats_booked"),
+                    flight,
+                    user
+            );
+            bookingController.addBooking(booking);
+        }
     }
 }

@@ -84,7 +84,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight{" +
+        return "Flight [" +
                 "id=" + id +
                 ", seatsCapacity=" + seatsCapacity +
                 ", seatsLeft=" + seatsLeft +
@@ -93,7 +93,7 @@ public class Flight {
                 ", dateFrom=" + dateFrom +
                 ", dateTo=" + dateTo +
                 ", price=" + price +
-                '}';
+                ']';
     }
 
     @Override
