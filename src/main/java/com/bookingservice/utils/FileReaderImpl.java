@@ -45,45 +45,45 @@ public class FileReaderImpl implements FileReader {
 
     @Override
     public boolean addFlights(String filePath, FlightControllerImpl flightController) {
-        try(Stream<String> stream = Files.lines(Paths.get(filePath))) {
-            stream.forEach(e -> {
-                String[] paramsStr = e.split(" ");
-                List<String> paramsList = Arrays.asList(paramsStr);
-                Flight flight = flightController.createFlight(
-                        Integer.parseInt(paramsList.get(0)),
-                        paramsList.get(1),
-                        paramsList.get(2),
-                        LocalDate.parse(paramsList.get(3)),
-                        LocalDate.parse(paramsList.get(4)),
-                        Double.parseDouble(paramsList.get(5))
-
-                );
-                flightController.addFlight(flight);
-            });
-        } catch (IOException e) {
-            System.out.println("Error!");
-            return false;
-        }
+//        try(Stream<String> stream = Files.lines(Paths.get(filePath))) {
+//            stream.forEach(e -> {
+//                String[] paramsStr = e.split(" ");
+//                List<String> paramsList = Arrays.asList(paramsStr);
+//                Flight flight = flightController.createFlight(
+//                        Integer.parseInt(paramsList.get(0)),
+//                        paramsList.get(1),
+//                        paramsList.get(2),
+//                        LocalDate.parse(paramsList.get(3)),
+//                        LocalDate.parse(paramsList.get(4)),
+//                        Double.parseDouble(paramsList.get(5))
+//
+//                );
+//                flightController.addFlight(flight);
+//            });
+//        } catch (IOException e) {
+//            System.out.println("Error!");
+//            return false;
+//        }
         return true;
     }
 
     @Override
     public boolean addBookings(String filePath, BookingControllerImpl bookingController, FlightControllerImpl flightController, UserControllerImpl userController) {
-        try(Stream<String> stream = Files.lines(Paths.get(filePath))) {
-            stream.forEach(e -> {
-                String[] paramsStr = e.split(" ");
-                List<String> paramsList = Arrays.asList(paramsStr);
-                Booking booking = bookingController.createBooking(
-                        Integer.parseInt(paramsList.get(0)),
-                        flightController.getFlightById(Integer.parseInt(paramsList.get(1))),
-                        userController.getUserById(Integer.parseInt(paramsList.get(2)))
-                );
-                bookingController.addBooking(booking);
-            });
-        } catch (IOException e) {
-            System.out.println("Error!");
-            return false;
-        }
+//        try(Stream<String> stream = Files.lines(Paths.get(filePath))) {
+//            stream.forEach(e -> {
+//                String[] paramsStr = e.split(" ");
+//                List<String> paramsList = Arrays.asList(paramsStr);
+//                Booking booking = bookingController.createBooking(
+//                        Integer.parseInt(paramsList.get(0)),
+//                        flightController.getFlightById(Integer.parseInt(paramsList.get(1))),
+//                        userController.getUserById(Integer.parseInt(paramsList.get(2)))
+//                );
+//                bookingController.addBooking(booking);
+//            });
+//        } catch (IOException e) {
+//            System.out.println("Error!");
+//            return false;
+//        }
         return true;
     }
 

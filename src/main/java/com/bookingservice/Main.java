@@ -2,6 +2,7 @@ package com.bookingservice;
 
 import com.bookingservice.db.DBConnector;
 import com.bookingservice.db.DBWorker;
+import com.bookingservice.models.Flight;
 import com.bookingservice.models.User;
 import com.bookingservice.utils.EncryptDecrypt;
 import com.bookingservice.view.ConsoleView;
@@ -24,7 +25,10 @@ public class Main {
         DBConnector connector = new DBConnector();
         DBWorker worker = new DBWorker(connector.getDBConnection());
         List<User> usersFromDB = worker.getUsersFromDB();
-        usersFromDB.forEach(System.out::println);
+        //usersFromDB.forEach(System.out::println);
+
+        List<Flight> flightsFromDB = worker.getFlightsFromDB();
+        flightsFromDB.forEach(System.out::println);
 
         EncryptDecrypt encryptDecrypt = new EncryptDecrypt();
         String password = "1234567890";

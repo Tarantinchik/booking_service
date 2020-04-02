@@ -1,6 +1,7 @@
 package com.bookingservice.models;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Flight {
@@ -14,14 +15,14 @@ public class Flight {
     private LocalDate dateTo;
     private Double price;
 
-    public Flight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
+    public Flight(int id, int seatsCapacity, int seatsLeft, String cityFrom, String cityTo, String dateFrom, String dateTo, double price) {
         this.id = id;
         this.seatsCapacity = seatsCapacity;
-        this.seatsLeft = seatsCapacity;
+        this.seatsLeft = seatsLeft;
         this.cityFrom = cityFrom;
         this.cityTo = cityTo;
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
+        this.dateFrom = LocalDate.parse(dateFrom, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.dateTo = LocalDate.parse(dateTo, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         this.price = price;
     }
 

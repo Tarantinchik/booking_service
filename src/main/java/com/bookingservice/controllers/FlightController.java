@@ -13,7 +13,7 @@ public interface FlightController {
     boolean addFlight(Flight flight);
 
     //create
-    Flight createFlight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price);
+    Flight createFlight(int id, int seatsCapacity, int seatsLeft, String cityFrom, String cityTo, String dateFrom, String dateTo, double price);
 
     //readAll
     List<Flight> getAllFlights();
