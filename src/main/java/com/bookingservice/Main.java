@@ -3,6 +3,7 @@ package com.bookingservice;
 import com.bookingservice.controllers.BookingControllerImpl;
 import com.bookingservice.controllers.FlightControllerImpl;
 import com.bookingservice.controllers.UserControllerImpl;
+import com.bookingservice.db.DBConnector;
 import com.bookingservice.utils.EncryptDecrypt;
 import com.bookingservice.utils.Initializer;
 
@@ -19,11 +20,12 @@ public class Main {
 
     public static void main(String[] args) throws NoSuchPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, SQLException {
 
+        DBConnector connector = new DBConnector();
         UserControllerImpl userController = new UserControllerImpl();
         FlightControllerImpl flightController = new FlightControllerImpl();
         BookingControllerImpl bookingController = new BookingControllerImpl();
 
-        Initializer initializer = new Initializer(userController, flightController, bookingController);
+        Initializer initializer = new Initializer(connector.getDBConnection(), userController, flightController, bookingController);
         initializer.initialize();
 
         userController.getAllUsers().forEach(System.out::println);
@@ -43,6 +45,8 @@ public class Main {
 
         String decrypt = encryptDecrypt.decrypt(encrypt);
         System.out.println(decrypt);
+
+        connector.closeDBConnection();
     }
 
 }

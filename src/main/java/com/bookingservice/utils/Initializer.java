@@ -6,24 +6,26 @@ import com.bookingservice.controllers.UserControllerImpl;
 import com.bookingservice.db.DBConnector;
 import com.bookingservice.db.DBWorker;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Initializer {
 
+    private final Connection connection;
     private final UserControllerImpl userController;
     private final FlightControllerImpl flightController;
     private final BookingControllerImpl bookingController;
 
-    public Initializer(UserControllerImpl userController, FlightControllerImpl flightController, BookingControllerImpl bookingController) {
+    public Initializer(Connection connection, UserControllerImpl userController, FlightControllerImpl flightController, BookingControllerImpl bookingController) {
+        this.connection = connection;
         this.userController = userController;
         this.flightController = flightController;
         this.bookingController = bookingController;
     }
 
-    public boolean initialize() throws SQLException {
 
-        DBConnector connector = new DBConnector();
-        DBWorker worker = new DBWorker(connector.getDBConnection(), userController, flightController, bookingController);
+    public boolean initialize() throws SQLException {
+        DBWorker worker = new DBWorker(connection, userController, flightController, bookingController);
         worker.getUsersFromDB();
         worker.getFlightsFromDB();
         worker.getBookingsFromDB();

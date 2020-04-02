@@ -9,14 +9,24 @@ import java.sql.SQLException;
 public class DBConnector {
 
     private PropertiesReader pr = new PropertiesReader();
+    private Connection connection;
 
     public Connection getDBConnection() {
         try {
             Class.forName(pr.getDriverClass());
-            return DriverManager.getConnection(pr.getUrl(), pr.getUser(), pr.getPassword());
+            connection = DriverManager.getConnection(pr.getUrl(), pr.getUser(), pr.getPassword());
+            return connection;
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            System.out.println("Get DB connection: Something was wrong!");
         }
         return null;
+    }
+
+    public void closeDBConnection() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Close DB connection: Something was wrong!");
+        }
     }
 }
