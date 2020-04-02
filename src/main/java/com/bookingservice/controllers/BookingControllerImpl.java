@@ -17,8 +17,8 @@ public class BookingControllerImpl implements BookingController {
     }
 
     @Override
-    public Booking createBooking(int seatsBooked, Flight flight, User user) {
-        return this.bookingService.createBooking(seatsBooked, flight, user);
+    public Booking createBooking(int id, int seatsBooked, Flight flight, User user) {
+        return this.bookingService.createBooking(id, seatsBooked, flight, user);
     }
 
     @Override

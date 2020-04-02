@@ -14,7 +14,7 @@ public interface BookingController {
     boolean addBooking(Booking booking);
 
     //create
-    Booking createBooking(int seatsBooked, Flight flight, User user);
+    Booking createBooking(int id, int seatsBooked, Flight flight, User user);
 
     //readAll
     List<Booking> getAllBookings();

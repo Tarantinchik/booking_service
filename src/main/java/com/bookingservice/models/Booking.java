@@ -4,14 +4,13 @@ import java.util.Objects;
 
 public class Booking {
 
-    private static int counter = 0;
-    private final int id;
-    private int seatsBooked;
+    private final Integer id;
+    private Integer seatsBooked;
     private Flight flight;
     private User user;
 
-    public Booking(int seatsBooked, Flight flight, User user) {
-        this.id = counter++;
+    public Booking(int id, int seatsBooked, Flight flight, User user) {
+        this.id = id;
         this.seatsBooked = seatsBooked;
         this.flight = flight;
         this.user = user;
@@ -59,7 +58,7 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return id == booking.id;
+        return id.equals(booking.id);
     }
 
     @Override

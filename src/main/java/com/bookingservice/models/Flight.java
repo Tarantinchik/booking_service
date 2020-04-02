@@ -5,18 +5,17 @@ import java.util.Objects;
 
 public class Flight {
 
-    private static int countId;
-    private int id;
-    private int seatsCapacity;
-    private int seatsLeft;
+    private final Integer id;
+    private Integer seatsCapacity;
+    private Integer seatsLeft;
     private String cityFrom;
     private String cityTo;
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    private double price;
+    private Double price;
 
-    public Flight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
-        this.id = countId++;
+    public Flight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
+        this.id = id;
         this.seatsCapacity = seatsCapacity;
         this.seatsLeft = seatsCapacity;
         this.cityFrom = cityFrom;
@@ -101,7 +100,7 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return id == flight.id;
+        return id.equals(flight.id);
     }
 
     @Override

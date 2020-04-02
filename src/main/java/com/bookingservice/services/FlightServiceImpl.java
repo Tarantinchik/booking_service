@@ -16,8 +16,8 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight createFlight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
-        return new Flight(seatsCapacity, cityFrom, cityTo, dateFrom, dateTo, price);
+    public Flight createFlight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
+        return new Flight(id, seatsCapacity, cityFrom, cityTo, dateFrom, dateTo, price);
     }
 
     @Override

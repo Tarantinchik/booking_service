@@ -14,7 +14,7 @@ public interface FlightService {
     boolean addFlight(Flight flight);
 
     //create
-    Flight createFlight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price);
+    Flight createFlight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price);
 
     //readAll
     List<Flight> getAllFlights();

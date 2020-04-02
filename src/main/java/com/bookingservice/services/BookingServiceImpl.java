@@ -17,8 +17,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public Booking createBooking(int seatsBooked, Flight flight, User user) {
-        return new Booking(seatsBooked, flight, user);
+    public Booking createBooking(int id, int seatsBooked, Flight flight, User user) {
+        return new Booking(id, seatsBooked, flight, user);
     }
 
     @Override

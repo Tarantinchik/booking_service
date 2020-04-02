@@ -1,7 +1,6 @@
 package com.bookingservice.controllers;
 
 import com.bookingservice.models.Flight;
-import com.bookingservice.models.User;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +13,7 @@ public interface FlightController {
     boolean addFlight(Flight flight);
 
     //create
-    Flight createFlight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price);
+    Flight createFlight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price);
 
     //readAll
     List<Flight> getAllFlights();

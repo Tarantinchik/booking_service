@@ -15,7 +15,7 @@ public class User {
     private String countryResidence;
     private String token;
 
-    public User(Integer id, String login, String password, String firstName, String lastName, String phone, String email, Integer age, String countryResidence) {
+    public User(int id, String login, String password, String firstName, String lastName, String phone, String email, int age, String countryResidence) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -29,9 +29,9 @@ public class User {
     }
 
     public User() {
+        this.id = -1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         this.login = "Unknown";
         this.password = "Unknown";
-        this.id = -1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         this.firstName = "Guest";
         this.lastName = "Guest";
         this.phone = "Unknown";
@@ -106,7 +106,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +
@@ -122,7 +121,7 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         User user = (User) o;
-        return id == user.id &&
+        return id.equals(user.id) &&
                 Objects.equals(phone, user.phone) &&
                 Objects.equals(email, user.email);
     }

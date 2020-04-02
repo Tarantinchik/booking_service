@@ -17,8 +17,8 @@ public class FlightControllerImpl implements FlightController {
     }
 
     @Override
-    public Flight createFlight(int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
-        return this.flightService.createFlight(seatsCapacity, cityFrom, cityTo, dateFrom, dateTo, price);
+    public Flight createFlight(int id, int seatsCapacity, String cityFrom, String cityTo, LocalDate dateFrom, LocalDate dateTo, double price) {
+        return this.flightService.createFlight(id, seatsCapacity, cityFrom, cityTo, dateFrom, dateTo, price);
     }
 
     @Override
