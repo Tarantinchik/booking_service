@@ -3,10 +3,8 @@ package com.bookingservice;
 import com.bookingservice.controllers.BookingControllerImpl;
 import com.bookingservice.controllers.FlightControllerImpl;
 import com.bookingservice.controllers.UserControllerImpl;
-import com.bookingservice.db.DBConnector;
-import com.bookingservice.db.DBWorker;
 import com.bookingservice.utils.EncryptDecrypt;
-import com.bookingservice.view.ConsoleView;
+import com.bookingservice.utils.Initializer;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -25,19 +23,15 @@ public class Main {
         FlightControllerImpl flightController = new FlightControllerImpl();
         BookingControllerImpl bookingController = new BookingControllerImpl();
 
-        //new ConsoleView().run();
-        DBConnector connector = new DBConnector();
-        DBWorker worker = new DBWorker(connector.getDBConnection(), userController, flightController, bookingController);
+        Initializer initializer = new Initializer(userController, flightController, bookingController);
+        initializer.initialize();
 
-        worker.getUsersFromDB();
         userController.getAllUsers().forEach(System.out::println);
         System.out.println();
 
-        worker.getFlightsFromDB();
         flightController.getAllFlights().forEach(System.out::println);
         System.out.println();
 
-        worker.getBookingsFromDB();
         bookingController.getAllBookings().forEach(System.out::println);
         System.out.println();
 
