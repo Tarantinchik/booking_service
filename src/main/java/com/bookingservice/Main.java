@@ -21,6 +21,7 @@ public class Main {
     public static void main(String[] args) throws NoSuchPaddingException, UnsupportedEncodingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException, InvalidKeyException, SQLException {
 
         DBConnector connector = new DBConnector();
+
         UserControllerImpl userController = new UserControllerImpl();
         FlightControllerImpl flightController = new FlightControllerImpl();
         BookingControllerImpl bookingController = new BookingControllerImpl();

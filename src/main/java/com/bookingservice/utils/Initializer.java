@@ -3,7 +3,6 @@ package com.bookingservice.utils;
 import com.bookingservice.controllers.BookingControllerImpl;
 import com.bookingservice.controllers.FlightControllerImpl;
 import com.bookingservice.controllers.UserControllerImpl;
-import com.bookingservice.db.DBConnector;
 import com.bookingservice.db.DBWorker;
 
 import java.sql.Connection;
@@ -24,12 +23,11 @@ public class Initializer {
     }
 
 
-    public boolean initialize() throws SQLException {
+    public void initialize() throws SQLException {
         DBWorker worker = new DBWorker(connection, userController, flightController, bookingController);
         worker.getUsersFromDB();
         worker.getFlightsFromDB();
         worker.getBookingsFromDB();
-        return true;
     }
 
 }

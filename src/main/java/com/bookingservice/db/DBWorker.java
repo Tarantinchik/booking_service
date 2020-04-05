@@ -35,7 +35,7 @@ public class DBWorker {
     }
 
     public void getUsersFromDB() throws SQLException {
-        String query = "SELECT * FROM users;";
+        query = "SELECT * FROM users;";
         ps = connection.prepareStatement(query);
         resultSet = ps.executeQuery();
         while (resultSet.next()) {
