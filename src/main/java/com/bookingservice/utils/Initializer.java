@@ -3,7 +3,7 @@ package com.bookingservice.utils;
 import com.bookingservice.controllers.BookingControllerImpl;
 import com.bookingservice.controllers.FlightControllerImpl;
 import com.bookingservice.controllers.UserControllerImpl;
-import com.bookingservice.db.DBWorker;
+import com.bookingservice.db.DBService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,7 +24,7 @@ public class Initializer {
 
 
     public void initialize() throws SQLException {
-        DBWorker worker = new DBWorker(connection, userController, flightController, bookingController);
+        DBService worker = new DBService(connection, userController, flightController, bookingController);
         worker.getUsersFromDB();
         worker.getFlightsFromDB();
         worker.getBookingsFromDB();
