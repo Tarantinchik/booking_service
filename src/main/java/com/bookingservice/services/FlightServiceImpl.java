@@ -1,6 +1,7 @@
 package com.bookingservice.services;
 
 import com.bookingservice.dao.FlightDAO;
+import com.bookingservice.db.DBService;
 import com.bookingservice.models.Flight;
 
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.List;
 public class FlightServiceImpl implements FlightService {
 
     private FlightDAO flightDAO = new FlightDAO();
+    private final DBService
 
     @Override
     public boolean addFlight(Flight flight) {

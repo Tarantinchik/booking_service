@@ -101,6 +101,7 @@ public class ConsoleView {
      * Shows all flights next Time
      */
     private void actionOnlineScoreboard() {
+
         this.flightController.getAllFlights().forEach(System.out::println);
     }
 
