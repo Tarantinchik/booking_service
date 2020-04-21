@@ -25,7 +25,7 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public String getFlightById(Integer id) {
+    public String getFlightById(Integer id) throws SQLException {
         return this.dbService.getFlightById(id);
     }
 

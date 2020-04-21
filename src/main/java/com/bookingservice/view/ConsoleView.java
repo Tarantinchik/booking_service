@@ -108,7 +108,7 @@ public class ConsoleView {
     /**
      * Shows flight info by [id]
      */
-    private void actionViewFlightInfo() {
+    private void actionViewFlightInfo() throws SQLException {
         System.out.println("\n\n[View flight information]");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input flight [id]: ");

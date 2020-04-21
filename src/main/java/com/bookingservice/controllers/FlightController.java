@@ -20,7 +20,7 @@ public interface FlightController {
     List<String> getAllFlights() throws SQLException;
 
     //readById
-    String getFlightById(Integer id);
+    String getFlightById(Integer id) throws SQLException;
 
     //readByParams
     List<String> getFlightsByParams(List<String> params);
