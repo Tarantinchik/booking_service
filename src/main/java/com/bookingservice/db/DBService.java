@@ -1,5 +1,6 @@
 package com.bookingservice.db;
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +19,14 @@ public class DBService {
         List<String> users = new ArrayList<>();
         while (resultSet.next()) {
             users.add(
-                    resultSet.getInt("id") + " "
-                            + resultSet.getString("login") + " "
-                            + resultSet.getString("password") + " "
-                            + resultSet.getString("first_name") + " "
-                            + resultSet.getString("last_name") + " "
-                            + resultSet.getString("phone") + " "
-                            + resultSet.getString("email") + " "
-                            + resultSet.getInt("age") + " "
+                    resultSet.getInt("id") + "   "
+                            + resultSet.getString("login") + "   "
+                            + resultSet.getString("password") + "   "
+                            + resultSet.getString("first_name") + "   "
+                            + resultSet.getString("last_name") + "   "
+                            + resultSet.getString("phone") + "   "
+                            + resultSet.getString("email") + "   "
+                            + resultSet.getInt("age") + "   "
                             + resultSet.getString("country_residence"));
         }
         connection.close();
@@ -39,13 +40,13 @@ public class DBService {
         List<String> flights = new ArrayList<>();
         while (resultSet.next()) {
             flights.add(
-                    resultSet.getInt("id") + " "
-                            + resultSet.getInt("seats_capacity") + " "
-                            + resultSet.getInt("seats_left") + " "
-                            + resultSet.getString("city_from") + " "
-                            + resultSet.getString("city_to") + " "
-                            + resultSet.getString("date_from") + " "
-                            + resultSet.getString("date_to") + " "
+                    resultSet.getInt("id") + "   "
+                            + resultSet.getInt("seats_capacity") + "   "
+                            + resultSet.getInt("seats_left") + "   "
+                            + resultSet.getString("city_from") + "   "
+                            + resultSet.getString("city_to") + "   "
+                            + resultSet.getString("date_from") + "   "
+                            + resultSet.getString("date_to") + "   "
                             + resultSet.getDouble("price"));
         }
         connection.close();
@@ -59,9 +60,9 @@ public class DBService {
         List<String> bookings = new ArrayList<>();
         while (resultSet.next()) {
             bookings.add(
-                    resultSet.getInt("id") + " "
-                            + resultSet.getInt("seats_booked") + " "
-                            + resultSet.getInt("flight_id") + " "
+                    resultSet.getInt("id") + "   "
+                            + resultSet.getInt("seats_booked") + "   "
+                            + resultSet.getInt("flight_id") + "   "
                             + resultSet.getInt("user_id")
             );
         }
@@ -74,18 +75,18 @@ public class DBService {
         ps = connection.prepareStatement(query);
         ps.setInt(1, id);
         resultSet = ps.executeQuery();
-        String flight = "";
-        while (resultSet.next()) {
-            flight =
-                    resultSet.getInt("id") + " "
-                    + resultSet.getInt("seats_capacity") + " "
-                    + resultSet.getInt("seats_left") + " "
-                    + resultSet.getString("city_from") + " "
-                    + resultSet.getString("city_to") + " "
-                    + resultSet.getString("date_from") + " "
-                    + resultSet.getString("date_to") + " "
-                    + resultSet.getDouble("price");
+        if (!resultSet.next()){
+            InputStream asciiStream = resultSet.getAsciiStream(1);
         }
+        String flight =
+                    resultSet.getInt("id") + "   "
+                    + resultSet.getInt("seats_capacity") + "   "
+                    + resultSet.getInt("seats_left") + "   "
+                    + resultSet.getString("city_from") + "   "
+                    + resultSet.getString("city_to") + "   "
+                    + resultSet.getString("date_from") + "   "
+                    + resultSet.getString("date_to") + "   "
+                    + resultSet.getDouble("price");
         connection.close();
         return flight;
     }
