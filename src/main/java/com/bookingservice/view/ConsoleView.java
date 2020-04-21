@@ -7,6 +7,7 @@ import com.bookingservice.models.User;
 import com.bookingservice.utils.Auth;
 import com.bookingservice.utils.FileReaderImpl;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +26,7 @@ public class ConsoleView {
     /**
      * Main action list
      */
-    public void run() {
+    public void run() throws SQLException {
 
         FileReaderImpl fileReader = new FileReaderImpl();
         fileReader.addUsers(DATA_FILE_USERS, userController);
@@ -68,7 +69,7 @@ public class ConsoleView {
      *
      * @param select as String
      */
-    private void select(String select) {
+    private void select(String select) throws SQLException {
         switch (select) {
             case "1":
                 actionOnlineScoreboard();
@@ -100,8 +101,7 @@ public class ConsoleView {
     /**
      * Shows all flights next Time
      */
-    private void actionOnlineScoreboard() {
-
+    private void actionOnlineScoreboard() throws SQLException {
         this.flightController.getAllFlights().forEach(System.out::println);
     }
 
@@ -111,6 +111,7 @@ public class ConsoleView {
     private void actionViewFlightInfo() {
         System.out.println("\n\n[View flight information]");
         Scanner scanner = new Scanner(System.in);
+        System.out.print("Input flight [id]: ");
         Integer id = scanner.nextInt();
         System.out.println(this.flightController.getFlightById(id));
     }

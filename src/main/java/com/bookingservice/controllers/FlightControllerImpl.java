@@ -1,48 +1,46 @@
 package com.bookingservice.controllers;
 
-import com.bookingservice.models.Flight;
 import com.bookingservice.services.FlightServiceImpl;
 
-import java.time.LocalDate;
+import java.sql.SQLException;
 import java.util.List;
 
 public class FlightControllerImpl implements FlightController {
 
     private FlightServiceImpl flightService = new FlightServiceImpl();
 
-
     @Override
-    public boolean addFlight(Flight flight) {
-        return this.flightService.addFlight(flight);
+    public boolean addFlight(String flight) {
+        return true;
     }
 
     @Override
-    public Flight createFlight(int id, int seatsCapacity, int seatsLeft, String cityFrom, String cityTo, String dateFrom, String dateTo, double price) {
-        return this.flightService.createFlight(id, seatsCapacity, seatsLeft, cityFrom, cityTo, dateFrom, dateTo, price);
+    public String createFlight(int id, int seatsCapacity, int seatsLeft, String cityFrom, String cityTo, String dateFrom, String dateTo, double price) {
+        return null;
     }
 
     @Override
-    public List<Flight> getAllFlights() {
+    public List<String> getAllFlights() throws SQLException {
         return this.flightService.getAllFlights();
     }
 
     @Override
-    public Flight getFlightById(Integer id) {
+    public String getFlightById(Integer id) {
         return this.flightService.getFlightById(id);
     }
 
     @Override
-    public List<Flight> getFlightsByParams(List<String> params) {
+    public List<String> getFlightsByParams(List<String> params) {
         return this.flightService.getFlightsByParams(params);
     }
 
     @Override
-    public Flight updateFlight(List<String> data) {
+    public String updateFlight(List<String> data) {
         return this.flightService.updateFlight(data);
     }
 
     @Override
-    public boolean deleteFlight(Flight flight) {
-        return this.flightService.deleteFlight(flight);
+    public boolean deleteFlight(String flight) {
+        return true;
     }
 }

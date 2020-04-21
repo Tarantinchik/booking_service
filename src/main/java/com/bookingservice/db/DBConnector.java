@@ -22,11 +22,4 @@ public class DBConnector {
         return null;
     }
 
-    public void closeDBConnection() {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println("Close DB connection: Something was wrong!");
-        }
-    }
 }
