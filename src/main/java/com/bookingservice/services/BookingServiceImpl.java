@@ -1,47 +1,53 @@
 package com.bookingservice.services;
 
 import com.bookingservice.dao.BookingDAO;
+import com.bookingservice.db.DBService;
 import com.bookingservice.models.Booking;
 import com.bookingservice.models.Flight;
 import com.bookingservice.models.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class BookingServiceImpl implements BookingService {
 
-   private BookingDAO bookingDAO = new BookingDAO();
+    private final DBService dbService = new DBService();
 
     @Override
     public boolean addBooking(Booking booking) {
-        return this.bookingDAO.addBooking(booking);
+        return false;
+        //return this.bookingDAO.addBooking(booking);
     }
 
     @Override
-    public Booking createBooking(int id, int seatsBooked, Flight flight, User user) {
-        return new Booking(id, seatsBooked, flight, user);
+    public Booking createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
+        return this.dbService.createBooking(seatsBooked, flightId, userId);
     }
 
     @Override
     public List<Booking> getAllBookings() {
-        return this.bookingDAO.getBookingList();
+        return null;
+        //return this.bookingDAO.getBookingList();
     }
 
     @Override
     public Booking getBookingById(Integer id) {
-        return this.bookingDAO.getBookingList()
-                .stream()
-                .filter(booking -> id.equals(booking.getId()))
-                .findFirst()
-                .orElse(null);
+//        return this.bookingDAO.getBookingList()
+//                .stream()
+//                .filter(booking -> id.equals(booking.getId()))
+//                .findFirst()
+//                .orElse(null);
+        return null;
     }
 
     @Override
     public Booking getBookingByUser(User user) {
-        return this.bookingDAO.getBookingList()
-                .stream()
-                .filter(booking -> user.equals(booking.getUser()))
-                .findFirst()
-                .orElse(null);
+//        return this.bookingDAO.getBookingList()
+//                .stream()
+//                .filter(booking -> user.equals(booking.getUser()))
+//                .findFirst()
+               // .orElse(null);
+        return null;
     }
 
     @Override
@@ -51,6 +57,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public boolean deleteBooking(Booking booking) {
-        return this.bookingDAO.deleteBooking(booking);
+        return false;
+        //return this.bookingDAO.deleteBooking(booking);
     }
 }

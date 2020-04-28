@@ -34,6 +34,7 @@ public class ConsoleView {
         fileReader.addBookings(DATA_FILE_BOOKINGS, bookingController, flightController, userController);
 
         String selectConsole = "";
+        this.user.setToken("1");
         while (true) {
             System.out.println("[Flight booking service]\n");
             System.out.println("Hi, " + this.user.getFirstName() + " " + this.user.getLastName() + "\n");
@@ -75,7 +76,7 @@ public class ConsoleView {
                 actionOnlineScoreboard();
                 break;
             case "2":
-                actionViewFlightInfo();
+                actionViewFlightInfoById();
                 break;
             case "3":
                 actionSearchFlightAndCreateBooking();
@@ -108,18 +109,50 @@ public class ConsoleView {
     /**
      * Shows flight info by [id]
      */
-    private void actionViewFlightInfo() throws SQLException {
+    private void actionViewFlightInfoById() {
         System.out.println("\n\n[View flight information]");
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input flight [id]: ");
-        Integer id = scanner.nextInt();
-        System.out.println(this.flightController.getFlightById(id));
+        int id;
+        while (true) {
+            try {
+                id = Integer.parseInt(scanner.nextLine());
+                if (id > 0 && id < 10000) {
+                    break;
+                } else {
+                    System.out.println("Error input number value! Try again...");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error input number type! Try again...");
+            }
+        }
+
+        String flightById = null;
+        try {
+            flightById = this.flightController.getFlightById(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(flightById);
     }
 
     /**
      * Search flight and create booking
      */
-    private void actionSearchFlightAndCreateBooking() {
+    private void actionSearchFlightAndCreateBooking() throws SQLException {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input flight id: ");
+        int flightId = Integer.parseInt(scanner.nextLine());
+        System.out.println();
+
+        System.out.print("Input seats booked: ");
+        int seatsBooked = Integer.parseInt(scanner.nextLine());
+        System.out.println();
+
+        int userId = this.user.getId();
+
+        this.bookingController.createBooking(seatsBooked, flightId, userId);
     }
 
     /**

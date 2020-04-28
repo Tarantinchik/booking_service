@@ -1,5 +1,7 @@
 package com.bookingservice.db;
 
+import com.bookingservice.models.Booking;
+
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
@@ -7,15 +9,11 @@ import java.util.List;
 
 public class DBService {
 
-    private final Connection connection = new DBConnector().getDBConnection();
-    private PreparedStatement ps;
-    private ResultSet resultSet;
-    private String query;
-
     public List<String> getUsers() throws SQLException {
-        query = "SELECT * FROM users;";
-        ps = connection.prepareStatement(query);
-        resultSet = ps.executeQuery();
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "SELECT * FROM users;";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ResultSet resultSet = ps.executeQuery();
         List<String> users = new ArrayList<>();
         while (resultSet.next()) {
             users.add(
@@ -34,11 +32,13 @@ public class DBService {
     }
 
     public List<String> getFlights() throws SQLException {
-        query = "SELECT * FROM flights;";
-        ps = connection.prepareStatement(query);
-        resultSet = ps.executeQuery();
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "SELECT * FROM flights;";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ResultSet resultSet = ps.executeQuery();
         List<String> flights = new ArrayList<>();
-        while (resultSet.next()) {
+        if (!resultSet.next()){
+            InputStream asciiStream = resultSet.getAsciiStream(1);
             flights.add(
                     resultSet.getInt("id") + "   "
                             + resultSet.getInt("seats_capacity") + "   "
@@ -48,15 +48,28 @@ public class DBService {
                             + resultSet.getString("date_from") + "   "
                             + resultSet.getString("date_to") + "   "
                             + resultSet.getDouble("price"));
+        } else {
+            while (resultSet.next()) {
+                flights.add(
+                        resultSet.getInt("id") + "   "
+                                + resultSet.getInt("seats_capacity") + "   "
+                                + resultSet.getInt("seats_left") + "   "
+                                + resultSet.getString("city_from") + "   "
+                                + resultSet.getString("city_to") + "   "
+                                + resultSet.getString("date_from") + "   "
+                                + resultSet.getString("date_to") + "   "
+                                + resultSet.getDouble("price"));
+            }
         }
         connection.close();
         return flights;
     }
 
     public List<String> getBookings() throws SQLException {
-        query = "SELECT * FROM bookings;";
-        ps = connection.prepareStatement(query);
-        resultSet = ps.executeQuery();
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "SELECT * FROM bookings;";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ResultSet resultSet = ps.executeQuery();
         List<String> bookings = new ArrayList<>();
         while (resultSet.next()) {
             bookings.add(
@@ -71,24 +84,46 @@ public class DBService {
     }
 
     public String getFlightById(Integer id) throws SQLException {
-        query = "SELECT * FROM flights WHERE id = ?;";
-        ps = connection.prepareStatement(query);
-        ps.setInt(1, id);
-        resultSet = ps.executeQuery();
-        if (!resultSet.next()){
-            InputStream asciiStream = resultSet.getAsciiStream(1);
-        }
-        String flight =
+        if (id > 0 && id < 10000) {
+            Connection connection = new DBConnector().getDBConnection();
+            String query = "SELECT * FROM flights WHERE id = ?;";
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet resultSet = ps.executeQuery();
+            if (!resultSet.next()) {
+                InputStream asciiStream = resultSet.getAsciiStream(1);
+            }
+
+//            if (resultSet.getInt("id") != null) {
+//
+//            }
+            String flight =
                     resultSet.getInt("id") + "   "
-                    + resultSet.getInt("seats_capacity") + "   "
-                    + resultSet.getInt("seats_left") + "   "
-                    + resultSet.getString("city_from") + "   "
-                    + resultSet.getString("city_to") + "   "
-                    + resultSet.getString("date_from") + "   "
-                    + resultSet.getString("date_to") + "   "
-                    + resultSet.getDouble("price");
-        connection.close();
-        return flight;
+                            + resultSet.getInt("seats_capacity") + "   "
+                            + resultSet.getInt("seats_left") + "   "
+                            + resultSet.getString("city_from") + "   "
+                            + resultSet.getString("city_to") + "   "
+                            + resultSet.getString("date_from") + "   "
+                            + resultSet.getString("date_to") + "   "
+                            + resultSet.getDouble("price");
+            connection.close();
+            return flight;
+        } else {
+            return "[]";
+        }
     }
 
+    public Booking createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "INSERT INTO bookings values (null, ?, ?, ?);";
+        PreparedStatement ps = connection.prepareStatement(query);
+
+        ps.setInt(1, seatsBooked);
+        ps.setInt(2, flightId);
+        ps.setInt(3, userId);
+
+        ResultSet resultSet = ps.executeQuery(query);
+        connection.close();
+        return null;
+    }
 }

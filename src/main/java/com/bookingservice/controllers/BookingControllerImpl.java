@@ -5,6 +5,7 @@ import com.bookingservice.models.Flight;
 import com.bookingservice.models.User;
 import com.bookingservice.services.BookingServiceImpl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class BookingControllerImpl implements BookingController {
@@ -17,8 +18,8 @@ public class BookingControllerImpl implements BookingController {
     }
 
     @Override
-    public Booking createBooking(int id, int seatsBooked, Flight flight, User user) {
-        return this.bookingService.createBooking(id, seatsBooked, flight, user);
+    public Booking createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
+        return this.bookingService.createBooking(seatsBooked, flightId, userId);
     }
 
     @Override

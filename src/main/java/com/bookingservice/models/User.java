@@ -29,7 +29,7 @@ public class User {
     }
 
     public User() {
-        this.id = -1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        this.id = 1; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         this.login = "Unknown";
         this.password = "Unknown";
         this.firstName = "Guest";
@@ -80,6 +80,8 @@ public class User {
     public String getToken() {
         return token;
     }
+
+
 
     public void setPhone(String phone) {
         this.phone = phone;
