@@ -46,4 +46,8 @@ public class BookingControllerImpl implements BookingController {
     public boolean deleteBooking(Booking booking) {
         return this.bookingService.deleteBooking(booking);
     }
+
+    public List<String> getBookingsByUserId(int id) throws SQLException {
+        return this.bookingService.getBookingsByUserId(id);
+    }
 }

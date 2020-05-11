@@ -3,6 +3,7 @@ package com.bookingservice.controllers;
 import com.bookingservice.models.User;
 import com.bookingservice.services.UserServiceImpl;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserControllerImpl implements UserController {
@@ -52,5 +53,12 @@ public class UserControllerImpl implements UserController {
     @Override
     public boolean deleteUser(User booking) {
         return this.userService.deleteUser(booking);
+    }
+
+    public List<Object> getUserDataByID(int id) throws SQLException {
+        if (id < 0 || id > 9999) {
+            return null;
+        }
+        return this.userService.getUserDataByID(id);
     }
 }

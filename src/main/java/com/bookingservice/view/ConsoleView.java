@@ -34,10 +34,12 @@ public class ConsoleView {
         fileReader.addBookings(DATA_FILE_BOOKINGS, bookingController, flightController, userController);
 
         String selectConsole = "";
-        this.user.setToken("1");
         while (true) {
+            List<Object> userDataList = this.userController.getUserDataByID(user.getId());
+            userDataList.add(user.getToken());
+
             System.out.println("[Flight booking service]\n");
-            System.out.println("Hi, " + this.user.getFirstName() + " " + this.user.getLastName() + "\n");
+            System.out.println("Hi, " + userDataList.get(3) + " " + userDataList.get(4) + "\n");
             System.out.println("Choose action: ");
             System.out.println("[0] - Exit");
             System.out.println("[1] - Online scoreboard");
@@ -46,8 +48,8 @@ public class ConsoleView {
             if (!this.user.getToken().equals("")) {
                 System.out.println("[3] - Search flight by data and booking");
                 System.out.println("[4] - Cancel booking");
-                System.out.println("[5] - Show user flights");
-                System.out.println("[6] - Log out [Token: " + this.user.getToken() + "]");
+                System.out.println("[5] - Show user bookings");
+                System.out.println("[6] - Log out [Token: " + userDataList.get(userDataList.size() - 1) + "]");
             } else {
                 System.out.println("[6] - Log in");
                 System.out.println("[7] - Registration");
@@ -85,7 +87,7 @@ public class ConsoleView {
                 actionCancelBooking();
                 break;
             case "5":
-                actionGetUserBookings();
+                actionGetUserBookings(user.getId());
                 break;
             case "6":
                 actionUserLogInOut();
@@ -124,6 +126,7 @@ public class ConsoleView {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Error input number type! Try again...");
+                System.out.print("Input flight [id]: ");
             }
         }
 
@@ -173,7 +176,8 @@ public class ConsoleView {
     /**
      * Returns users's bookings (only for authorized users!)
      */
-    private void actionGetUserBookings() {
+    private void actionGetUserBookings(int id) throws SQLException {
+        List<String> bookingList = this.bookingController.getBookingsByUserId(id);
     }
 
     /**

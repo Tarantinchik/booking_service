@@ -60,4 +60,8 @@ public class BookingServiceImpl implements BookingService {
         return false;
         //return this.bookingDAO.deleteBooking(booking);
     }
+
+    public List<String> getBookingsByUserId(int id) throws SQLException {
+        return this.dbService.getBookingsByUserId(id);
+    }
 }

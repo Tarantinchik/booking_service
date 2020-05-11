@@ -38,7 +38,7 @@ public class User {
         this.email = "Unknown";
         this.age = 0;
         this.countryResidence = "Unknown"; //!!!!!!!!! Country -> IP
-        this.token = "";
+        this.token = String.valueOf(this.hashCode());
     }
 
     public int getId() {

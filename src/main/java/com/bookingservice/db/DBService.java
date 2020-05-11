@@ -37,7 +37,7 @@ public class DBService {
         PreparedStatement ps = connection.prepareStatement(query);
         ResultSet resultSet = ps.executeQuery();
         List<String> flights = new ArrayList<>();
-        if (!resultSet.next()){
+        if (!resultSet.next()) {
             InputStream asciiStream = resultSet.getAsciiStream(1);
             flights.add(
                     resultSet.getInt("id") + "   "
@@ -125,5 +125,66 @@ public class DBService {
         ResultSet resultSet = ps.executeQuery(query);
         connection.close();
         return null;
+    }
+
+    public List<Object> getUserDataByID(int id) throws SQLException {
+        if (id < 0 || id > 9999) {
+            return null;
+        }
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "SELECT * FROM users WHERE id = ?;";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setInt(1, id);
+        ResultSet resultSet = ps.executeQuery();
+        List<Object> userDataList = new ArrayList<>();
+
+        if (!resultSet.next()) {
+            InputStream asciiStream = resultSet.getAsciiStream(1);
+        }
+        userDataList.add(resultSet.getInt("id"));
+        userDataList.add(resultSet.getString("login"));
+        userDataList.add(resultSet.getString("password"));
+        userDataList.add(resultSet.getString("first_name"));
+        userDataList.add(resultSet.getString("last_name"));
+        userDataList.add(resultSet.getString("phone"));
+        userDataList.add(resultSet.getString("email"));
+        userDataList.add(resultSet.getInt("age"));
+        userDataList.add(resultSet.getString("country_residence"));
+        connection.close();
+        return userDataList;
+    }
+
+    public List<String> getBookingsByUserId(int id) throws SQLException {
+        if (id < 0 || id > 9999) {
+            return null;
+        }
+
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "SELECT * FROM bookings WHERE user_id = ?;";
+        PreparedStatement ps = connection.prepareStatement(query);
+        ps.setInt(1, id);
+        ResultSet resultSet = ps.executeQuery();
+        List<String> bookingList = new ArrayList<>();
+
+        if (!resultSet.next()) {
+            InputStream asciiStream = resultSet.getAsciiStream(1);
+            bookingList.add(
+                    resultSet.getInt("id") + "   "
+                            + resultSet.getInt("seats_booked") + "   "
+                            + resultSet.getInt("flight_id") + "   "
+                            + resultSet.getInt("user_id")
+            );
+        } else {
+            while (resultSet.next()) {
+                bookingList.add(
+                        resultSet.getInt("id") + "   "
+                                + resultSet.getInt("seats_booked") + "   "
+                                + resultSet.getInt("flight_id") + "   "
+                                + resultSet.getInt("user_id")
+                );
+            }
+        }
+        connection.close();
+        return bookingList;
     }
 }
