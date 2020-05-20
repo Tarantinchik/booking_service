@@ -113,18 +113,42 @@ public class DBService {
         }
     }
 
-    public Booking createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
+    public boolean createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
         Connection connection = new DBConnector().getDBConnection();
-        String query = "INSERT INTO bookings values (null, ?, ?, ?);";
-        PreparedStatement ps = connection.prepareStatement(query);
+        String query = "";
+        PreparedStatement ps;
 
-        ps.setInt(1, seatsBooked);
-        ps.setInt(2, flightId);
-        ps.setInt(3, userId);
+        //TODO
+        query = "SELECT seats_left FROM flights WHERE id = ?;";
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, flightId);
+        ResultSet resultSet = ps.executeQuery();
+        if (!resultSet.next()) {
+            InputStream asciiStream = resultSet.getAsciiStream(1);
+        }
+        int seatsLeft = resultSet.getInt("seats_left");
 
-        ResultSet resultSet = ps.executeQuery(query);
+        if (seatsBooked <= seatsLeft) {
+            query = "INSERT INTO bookings values (null, ?, ?, ?);";
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, seatsBooked);
+            ps.setInt(2, flightId);
+            ps.setInt(3, userId);
+            ps.executeUpdate();
+
+            //TODO
+            query = "UPDATE flights SET seats_left = ? WHERE id = ?;";
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, (seatsLeft - seatsBooked));
+            ps.setInt(2, flightId);
+            ps.executeUpdate();
+
+            connection.close();
+            return true;
+        }
+
         connection.close();
-        return null;
+        return false;
     }
 
     public List<Object> getUserDataByID(int id) throws SQLException {
@@ -186,5 +210,43 @@ public class DBService {
         }
         connection.close();
         return bookingList;
+    }
+
+    public boolean deleteBooking(int bookingId) throws SQLException {
+        Connection connection = new DBConnector().getDBConnection();
+        String query = "";
+        PreparedStatement ps;
+        ResultSet resultSet;
+        //TODO
+        query = "SELECT seats_booked FROM bookings WHERE id = ?;";
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, bookingId);
+        resultSet = ps.executeQuery();
+        if (!resultSet.next()) {
+            InputStream asciiStream = resultSet.getAsciiStream(1);
+        }
+        int seatsBooked = resultSet.getInt("seats_booked");
+
+        query = "SELECT seats_left FROM flights WHERE id = (SELECT flight_id FROM bookings WHERE id = ?);";
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, bookingId);
+        resultSet = ps.executeQuery();
+        if (!resultSet.next()) {
+            InputStream asciiStream = resultSet.getAsciiStream(1);
+        }
+        int seatsLeft = resultSet.getInt("seats_left");
+
+        query = "UPDATE flights SET seats_left = ? WHERE id = (SELECT flight_id FROM bookings WHERE id = ?);";
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, seatsLeft + seatsBooked);
+        ps.setInt(2, bookingId);
+        ps.executeUpdate();
+
+        query = "DELETE FROM bookings WHERE id = ?;";
+        ps = connection.prepareStatement(query);
+        ps.setInt(1, bookingId);
+        ps.executeUpdate();
+        connection.close();
+        return true;
     }
 }

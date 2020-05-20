@@ -1,0 +1,562 @@
+[
+  {
+    "id": "5eb33882c12b61392ce9c508",
+    "name": "Comming",
+    "closed": false,
+    "pos": 131071,
+    "softLimit": null,
+    "idBoard": "5eb33882c12b61392ce9c507",
+    "subscribed": false,
+    "cards": [
+      {
+        "id": "5eb33882c12b61392ce9c5b6",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-06T22:21:55.600Z",
+        "desc": "",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33882c12b61392ce9c508",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 81,
+        "idAttachmentCover": null,
+        "idLabels": [
+          "5eb33882c12b61392ce9c5bc",
+          "5eb33882c12b61392ce9c5ba"
+        ],
+        "manualCoverAttachment": false,
+        "name": "#80 - 01:00 - 2Н",
+        "pos": 16384,
+        "shortLink": "GH7r2IxB",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 1,
+          "description": false,
+          "due": "2020-04-30T22:00:00.000Z",
+          "dueComplete": true
+        },
+        "dueComplete": true,
+        "due": "2020-04-30T22:00:00.000Z",
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+          {
+            "id": "5eb33882c12b61392ce9c5bc",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "NOT PAID",
+            "color": "red"
+          },
+          {
+            "id": "5eb33882c12b61392ce9c5ba",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "EXHIBITED",
+            "color": "sky"
+          }
+        ],
+        "shortUrl": "https://trello.com/c/GH7r2IxB",
+        "subscribed": false,
+        "url": "https://trello.com/c/GH7r2IxB/81-80-0100-2%D0%BD",
+        "cover": {
+          "idAttachment": null,
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      },
+      {
+        "id": "5eb33882c12b61392ce9c5b2",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-09T20:10:22.372Z",
+        "desc": "",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33882c12b61392ce9c508",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 79,
+        "idAttachmentCover": "5eb33883c12b61392ce9cc81",
+        "idLabels": [
+          "5eb33882c12b61392ce9c5ba",
+          "5eb33882c12b61392ce9c5be"
+        ],
+        "manualCoverAttachment": false,
+        "name": "#78 - 22:00 - 2Н",
+        "pos": 147456,
+        "shortLink": "UUzUS4qK",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 2,
+          "description": false,
+          "due": "2020-04-23T19:00:00.000Z",
+          "dueComplete": true
+        },
+        "dueComplete": true,
+        "due": "2020-04-23T19:00:00.000Z",
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+          {
+            "id": "5eb33882c12b61392ce9c5ba",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "EXHIBITED",
+            "color": "sky"
+          },
+          {
+            "id": "5eb33882c12b61392ce9c5be",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "PAID",
+            "color": "green"
+          }
+        ],
+        "shortUrl": "https://trello.com/c/UUzUS4qK",
+        "subscribed": false,
+        "url": "https://trello.com/c/UUzUS4qK/79-78-2200-2%D0%BD",
+        "cover": {
+          "idAttachment": "5eb33883c12b61392ce9cc81",
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      },
+      {
+        "id": "5eb33882c12b61392ce9c5b4",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-06T22:23:45.918Z",
+        "desc": "",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33882c12b61392ce9c508",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 80,
+        "idAttachmentCover": "",
+        "idLabels": [
+          "5eb33882c12b61392ce9c5ba",
+          "5eb33882c12b61392ce9c5bc"
+        ],
+        "manualCoverAttachment": true,
+        "name": "#79 - 01:00 - 2Н",
+        "pos": 180224,
+        "shortLink": "4DuS4QEv",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 1,
+          "description": false,
+          "due": "2020-04-26T17:00:00.000Z",
+          "dueComplete": true
+        },
+        "dueComplete": true,
+        "due": "2020-04-26T17:00:00.000Z",
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+          {
+            "id": "5eb33882c12b61392ce9c5ba",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "EXHIBITED",
+            "color": "sky"
+          },
+          {
+            "id": "5eb33882c12b61392ce9c5bc",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "NOT PAID",
+            "color": "red"
+          }
+        ],
+        "shortUrl": "https://trello.com/c/4DuS4QEv",
+        "subscribed": false,
+        "url": "https://trello.com/c/4DuS4QEv/80-79-0100-2%D0%BD",
+        "cover": {
+          "idAttachment": null,
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      },
+      {
+        "id": "5eb33882c12b61392ce9c5b0",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-09T20:10:28.367Z",
+        "desc": "",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33882c12b61392ce9c508",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 78,
+        "idAttachmentCover": "5eb33883c12b61392ce9cc76",
+        "idLabels": [
+          "5eb33882c12b61392ce9c5ba",
+          "5eb33882c12b61392ce9c5be"
+        ],
+        "manualCoverAttachment": false,
+        "name": "#77 - 20:00 - 2Н",
+        "pos": 212992,
+        "shortLink": "p9HRlddr",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 2,
+          "description": false,
+          "due": "2020-04-22T17:00:00.000Z",
+          "dueComplete": true
+        },
+        "dueComplete": true,
+        "due": "2020-04-22T17:00:00.000Z",
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+          {
+            "id": "5eb33882c12b61392ce9c5ba",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "EXHIBITED",
+            "color": "sky"
+          },
+          {
+            "id": "5eb33882c12b61392ce9c5be",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "PAID",
+            "color": "green"
+          }
+        ],
+        "shortUrl": "https://trello.com/c/p9HRlddr",
+        "subscribed": false,
+        "url": "https://trello.com/c/p9HRlddr/78-77-2000-2%D0%BD",
+        "cover": {
+          "idAttachment": "5eb33883c12b61392ce9cc76",
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      }
+    ]
+  },
+  {
+    "id": "5eb338ac21b23a194ba71092",
+    "name": "Closed",
+    "closed": false,
+    "pos": 278527,
+    "softLimit": null,
+    "idBoard": "5eb33882c12b61392ce9c507",
+    "subscribed": false,
+    "cards": [
+
+    ]
+  },
+  {
+    "id": "5eb33882c12b61392ce9c50a",
+    "name": "Held Payments",
+    "closed": false,
+    "pos": 327679,
+    "softLimit": null,
+    "idBoard": "5eb33882c12b61392ce9c507",
+    "subscribed": false,
+    "cards": [
+      {
+        "id": "5eb33882c12b61392ce9c518",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-06T22:21:54.335Z",
+        "desc": "###Card Number:  `4149-6293-0064-3913`\n###Отримувач: `Михайлів Назар Дмитрович`\n###Price pre lesson : `300грн`\n",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33882c12b61392ce9c50a",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 1,
+        "idAttachmentCover": null,
+        "idLabels": [
+          "5eb33882c12b61392ce9c5b8"
+        ],
+        "manualCoverAttachment": false,
+        "name": "FOR PAYMENT",
+        "pos": 8192,
+        "shortLink": "F5qkGrtR",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 0,
+          "description": true,
+          "due": null,
+          "dueComplete": false
+        },
+        "dueComplete": false,
+        "due": null,
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+          {
+            "id": "5eb33882c12b61392ce9c5b8",
+            "idBoard": "5eb33882c12b61392ce9c507",
+            "name": "INFORMATION",
+            "color": "yellow"
+          }
+        ],
+        "shortUrl": "https://trello.com/c/F5qkGrtR",
+        "subscribed": false,
+        "url": "https://trello.com/c/F5qkGrtR/1-for-payment",
+        "cover": {
+          "idAttachment": null,
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      }
+    ]
+  },
+  {
+    "id": "5eb33955c397c32051a83194",
+    "name": "Task Case",
+    "closed": false,
+    "pos": 393215,
+    "softLimit": null,
+    "idBoard": "5eb33882c12b61392ce9c507",
+    "subscribed": false,
+    "cards": [
+      {
+        "id": "5eb339746e2a378570385ac0",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-06T22:27:30.096Z",
+        "desc": "",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33955c397c32051a83194",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 82,
+        "idAttachmentCover": null,
+        "idLabels": [
+
+        ],
+        "manualCoverAttachment": false,
+        "name": "1. Paid , image, due date",
+        "pos": 65535,
+        "shortLink": "ZuHxDgbJ",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 0,
+          "description": false,
+          "due": null,
+          "dueComplete": false
+        },
+        "dueComplete": false,
+        "due": null,
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+
+        ],
+        "shortUrl": "https://trello.com/c/ZuHxDgbJ",
+        "subscribed": false,
+        "url": "https://trello.com/c/ZuHxDgbJ/82-1-paid-image-due-date",
+        "cover": {
+          "idAttachment": null,
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      },
+      {
+        "id": "5eb339cb069ed41189a8f936",
+        "checkItemStates": null,
+        "closed": false,
+        "dateLastActivity": "2020-05-06T22:27:23.079Z",
+        "desc": "",
+        "descData": null,
+        "dueReminder": null,
+        "idBoard": "5eb33882c12b61392ce9c507",
+        "idList": "5eb33955c397c32051a83194",
+        "idMembersVoted": [
+
+        ],
+        "idShort": 83,
+        "idAttachmentCover": null,
+        "idLabels": [
+
+        ],
+        "manualCoverAttachment": false,
+        "name": "2. Move to closed (set Closed label,  due date - check)",
+        "pos": 131071,
+        "shortLink": "zcl5BYBx",
+        "isTemplate": false,
+        "badges": {
+          "attachmentsByType": {
+            "trello": {
+              "board": 0,
+              "card": 0
+            }
+          },
+          "location": false,
+          "votes": 0,
+          "viewingMemberVoted": false,
+          "subscribed": false,
+          "fogbugz": "",
+          "checkItems": 0,
+          "checkItemsChecked": 0,
+          "checkItemsEarliestDue": null,
+          "comments": 0,
+          "attachments": 0,
+          "description": false,
+          "due": null,
+          "dueComplete": false
+        },
+        "dueComplete": false,
+        "due": null,
+        "idChecklists": [
+
+        ],
+        "idMembers": [
+
+        ],
+        "labels": [
+
+        ],
+        "shortUrl": "https://trello.com/c/zcl5BYBx",
+        "subscribed": false,
+        "url": "https://trello.com/c/zcl5BYBx/83-2-move-to-closed-set-closed-label-due-date-check",
+        "cover": {
+          "idAttachment": null,
+          "color": null,
+          "idUploadedBackground": null,
+          "size": "normal",
+          "brightness": "light"
+        }
+      }
+    ]
+  }
+]

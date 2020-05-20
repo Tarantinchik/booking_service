@@ -18,7 +18,7 @@ public class BookingControllerImpl implements BookingController {
     }
 
     @Override
-    public Booking createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
+    public boolean createBooking(int seatsBooked, int flightId, int userId) throws SQLException {
         return this.bookingService.createBooking(seatsBooked, flightId, userId);
     }
 
@@ -43,8 +43,8 @@ public class BookingControllerImpl implements BookingController {
     }
 
     @Override
-    public boolean deleteBooking(Booking booking) {
-        return this.bookingService.deleteBooking(booking);
+    public boolean deleteBooking(int bookingId) throws SQLException {
+        return this.bookingService.deleteBooking(bookingId);
     }
 
     public List<String> getBookingsByUserId(int id) throws SQLException {

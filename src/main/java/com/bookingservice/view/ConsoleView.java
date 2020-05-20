@@ -170,7 +170,16 @@ public class ConsoleView {
     /**
      * Cancel booking by [id]
      */
-    private void actionCancelBooking() {
+    private void actionCancelBooking() throws SQLException {
+        List<String> bookingsByUserId = this.bookingController.getBookingsByUserId(this.user.getId());
+        bookingsByUserId.forEach(System.out::println);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Input booking id: ");
+        int bookingId = Integer.parseInt(scanner.nextLine());
+        System.out.println();
+
+        this.bookingController.deleteBooking(bookingId);
     }
 
     /**

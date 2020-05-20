@@ -15,7 +15,7 @@ public interface BookingController {
     boolean addBooking(Booking booking);
 
     //create
-    Booking createBooking(int seatsBooked, int flightId, int userId) throws SQLException;
+    boolean createBooking(int seatsBooked, int flightId, int userId) throws SQLException;
 
     //readAll
     List<Booking> getAllBookings();
@@ -30,6 +30,6 @@ public interface BookingController {
     Booking updateBooking(List<String> data);
 
     //delete
-    boolean deleteBooking(Booking booking);
+    boolean deleteBooking(int bookingId) throws SQLException;
 
 }
