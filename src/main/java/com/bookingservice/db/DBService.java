@@ -84,6 +84,7 @@ public class DBService {
     }
 
     public String getFlightById(Integer id) throws SQLException {
+        String flight = "";
         if (id > 0 && id < 10000) {
             Connection connection = new DBConnector().getDBConnection();
             String query = "SELECT * FROM flights WHERE id = ?;";
@@ -92,12 +93,10 @@ public class DBService {
             ResultSet resultSet = ps.executeQuery();
             if (!resultSet.next()) {
                 InputStream asciiStream = resultSet.getAsciiStream(1);
+                return null;
             }
 
-//            if (resultSet.getInt("id") != null) {
-//
-//            }
-            String flight =
+            flight =
                     resultSet.getInt("id") + "   "
                             + resultSet.getInt("seats_capacity") + "   "
                             + resultSet.getInt("seats_left") + "   "
@@ -107,10 +106,8 @@ public class DBService {
                             + resultSet.getString("date_to") + "   "
                             + resultSet.getDouble("price");
             connection.close();
-            return flight;
-        } else {
-            return "[]";
         }
+        return flight;
     }
 
     public boolean createBooking(int seatsBooked, int flightId, int userId) throws SQLException {

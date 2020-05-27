@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User {
 
-    private final Integer id;
+    private Integer id;
     private String login;
     private String password;
     private String firstName;
@@ -43,6 +43,10 @@ public class User {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getLogin() {

@@ -8,6 +8,7 @@ import com.bookingservice.utils.Auth;
 import com.bookingservice.utils.FileReaderImpl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -123,6 +124,7 @@ public class ConsoleView {
                     break;
                 } else {
                     System.out.println("Error input number value! Try again...");
+                    System.out.print("Input flight [id]: ");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Error input number type! Try again...");
@@ -130,25 +132,48 @@ public class ConsoleView {
             }
         }
 
-        String flightById = null;
         try {
-            flightById = this.flightController.getFlightById(id);
+            String flightById = this.flightController.getFlightById(id);
+            System.out.println(flightById);
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Flight not exists!");
         }
-        System.out.println(flightById);
     }
 
     /**
      * Search flight and create booking
      */
     private void actionSearchFlightAndCreateBooking() throws SQLException {
-
+        int flightId;
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Input flight id: ");
-        int flightId = Integer.parseInt(scanner.nextLine());
+        List<String> allFlights = this.flightController.getAllFlights();
+        allFlights.forEach(System.out::println);
+        List<String> flightIdList = new ArrayList<>();
         System.out.println();
+        allFlights.forEach(e -> {
+            String[] str = e.split(" ");
+            flightIdList.add(str[0] + "   ");
+        });
 
+        while (true) {
+            flightIdList.forEach(System.out::print);
+            System.out.println();
+            System.out.print("Input flight id: ");
+            flightId = Integer.parseInt(scanner.nextLine());
+            int finalFlightId = flightId;
+            boolean present = flightIdList
+                    .stream()
+                    .anyMatch(e -> Integer.parseInt(e.trim()) == finalFlightId);
+
+            if (present) {
+                break;
+            } else {
+                System.out.println("Incorrect flight number!");
+            }
+        }
+
+        System.out.println();
         System.out.print("Input seats booked: ");
         int seatsBooked = Integer.parseInt(scanner.nextLine());
         System.out.println();
@@ -187,14 +212,18 @@ public class ConsoleView {
      */
     private void actionGetUserBookings(int id) throws SQLException {
         List<String> bookingList = this.bookingController.getBookingsByUserId(id);
+        bookingList.forEach(System.out::println);
     }
 
     /**
      * Makes Log In/Out for users
      */
     private void actionUserLogInOut() {
-        if(!this.user.getToken().equals("")) {
+        if (!this.user.getToken().equals("")) {
             this.user = new User();
+            this.user.setId(0);
+            this.user.setToken("");
+
         } else {
             System.out.println("\n\n[Input login and password]");
             Scanner scanner = new Scanner(System.in);
